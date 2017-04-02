@@ -1,0 +1,35 @@
+{
+  "name": "data-portal",
+  "version": "1.0.0",
+  "description": "WRLDC constituent data entry portal",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha project\\tests --recursive --watch",
+    "start": "node app.js"
+  },
+  "author": "Sudhir",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.0-rc.5",
+    "body-parser": "latest",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "morgan": "^1.7.0",
+    "mysql": "^2.10.2",
+    "ejs": "latest",
+    "serve-favicon": "latest",
+    "crypto": "latest",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "squel": "latest",
+    "nodemailer": "^2",
+    "nodemailer-sendgrid-transport": "latest",
+    "multer": "1.2.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}

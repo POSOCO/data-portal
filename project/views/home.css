@@ -1,0 +1,42 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", sans-serif;
+}
+
+.wrapper {
+    min-height: 100%;
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    padding: 0.1em;
+    margin-bottom: -2.8em;
+}
+
+.footer,
+.push {
+    font-family: Arial;
+    font-size: 0.75em;
+    padding-left: 1em;
+    padding-top: 1em;
+    height: 3em;
+}
+
+table, td {
+    border: 1px solid #999999;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 5px;
+}
+
+.pagination > li {
+    display: inline;
+    margin-right: 10px;
+}
+
+/*highlighting the hovered row*/
+table tr:hover td, table tr:hover a {
+    background-color: #eeeeee;
+    font-weight: bold;
+}
