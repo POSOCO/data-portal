@@ -62,16 +62,25 @@ exports.createArray = function (time_str, key_str, val_str, done) {
     //todo complete this
     var insertColumns = tableColumns.slice(1, tableColumns.length);
     var values = [time_str, key_str, val_str];
-    var sql = squel.insert()
-        .into(tableName);
-    for (var i = 0; i < insertColumns.length; i++) {
-        sql.set(insertColumns[i], "?", {dontQuote: true});
+    var rowsArray = [];
+    var timeColName = "time";
+    var keyColName = "key_string";
+    var valueColName = "value_string";
+
+    for(var i = 0; i < key_str.length; i++){
+        rowsArray.push({ timeColName : time_str[i], keyColName: key_str[i] , valueColName : val_str[i]});
     }
-    //console.log("The Approval update SQL query is " + sql.toString());
-    db.get().query(sql.toString(), values, function (err, result) {
+
+    var sql = squel.insert()
+        .into(tableName)
+        .setFieldsRows(rowsArray);
+
+    console.log("The constdata create SQL query is " + sql.toString());
+    done(null, "result.insertId");
+    /*db.get().query(sql.toString(), values, function (err, result) {
         if (err) return done(err);
         done(null, result.insertId);
-    });
+    });*/
 };
 
 exports.update = function (id, time_str, key_str, val_str, done) {

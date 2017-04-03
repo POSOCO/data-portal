@@ -32,12 +32,12 @@ router.post('/create', function (req, res, next) {
     var vals = req["body"]["vals[]"];
 
     res.json({'data': req.body});
-    /*Const_Data.create(time_str, key_str, val_str, function (err, insertId) {
+    Const_Data.createArray("timeStr", keys, vals, function (err, insertId) {
         if (err) {
             return next(err);
         }
         res.json({'insertId': insertId});
-    });*/
+    });
 });
 
 
