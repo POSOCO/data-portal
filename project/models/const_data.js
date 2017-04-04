@@ -61,7 +61,6 @@ exports.create = function (time_str, key_str, val_str, done) {
 exports.createArray = function (time_str, key_str, val_str, done) {
     //todo complete this
     var insertColumns = tableColumns.slice(1, tableColumns.length);
-    var values = [time_str, key_str, val_str];
     var rowsArray = [];
     var timeColName = "time";
     var keyColName = "key_string";
@@ -89,7 +88,7 @@ exports.createArray = function (time_str, key_str, val_str, done) {
     console.log("The constdata create SQL query is " + query);
     //done(null, "result.insertId");
 
-    db.get().query(query, values, function (err, result) {
+    db.get().query(query, function (err, result) {
         if (err) return done(err);
         done(null, result.insertId);
     });

@@ -51,6 +51,7 @@ app.use('/', require('./project/controllers/auth'));
 app.use('/', require('./project/controllers/general'));
 app.use('/api/const_data/', require('./project/controllers/const_data'));
 app.use('/api/roles/', require('./project/controllers/role'));
+app.use('/api/key_strings/', require('./project/controllers/key_string'));
 app.use('/test/usertest', require('./project/controllers/testing'));
 
 // catch 404 and forward to error handler

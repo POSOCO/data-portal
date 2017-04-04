@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2017 at 08:38 PM
+-- Generation Time: Apr 04, 2017 at 06:56 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -36,15 +36,22 @@ CREATE TABLE IF NOT EXISTS `const_data` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `time` (`time`,`key_string`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `const_data`
 --
 
 INSERT INTO `const_data` (`id`, `time`, `key_string`, `value_string`, `created_at`, `updated_at`) VALUES
-  (1, '2017-04-02 21:11:28', 'kstps_mu', '69', '2017-04-02 21:11:28', '2017-04-02 21:11:28'),
-  (2, '2017-04-02 00:00:00', 'kawas_tot_mu', '6.2', '2017-04-02 21:25:16', '2017-04-02 21:25:16');
+  (15, '2017-04-03 00:00:00', 'kstps_tot_mu', '34', '2017-04-04 14:26:23', '2017-04-04 20:59:29'),
+  (16, '2017-04-03 00:00:00', 'sipat_tot_mu', '4554', '2017-04-04 14:26:23', '2017-04-04 20:59:29'),
+  (17, '2017-04-03 00:00:00', 'vstps_tot_mu', '41554', '2017-04-04 14:26:23', '2017-04-04 20:59:29'),
+  (18, '2017-04-03 00:00:00', 'kawas_tot_mu', '8487', '2017-04-04 14:26:23', '2017-04-04 20:59:29'),
+  (19, '2017-04-03 00:00:00', 'gandhar_tot_mu', '4534', '2017-04-04 14:26:23', '2017-04-04 20:59:29'),
+  (20, '2017-04-03 00:00:00', 'mouda_tot_mu', '4354', '2017-04-04 14:26:23', '2017-04-04 20:59:29'),
+  (81, '2017-04-03 00:00:00', 'ssp_tot_mu', '246', '2017-04-04 15:11:42', '2017-04-04 15:11:42'),
+  (88, '2017-04-04 00:00:00', 'kstps_tot_mu', '150', '2017-04-05 00:08:13', '2017-04-05 00:08:13'),
+  (89, '2017-04-04 00:00:00', 'sipat_tot_mu', '200', '2017-04-05 00:08:13', '2017-04-05 00:08:13');
 
 -- --------------------------------------------------------
 
@@ -55,15 +62,29 @@ INSERT INTO `const_data` (`id`, `time`, `key_string`, `value_string`, `created_a
 DROP TABLE IF EXISTS `key_strings`;
 CREATE TABLE IF NOT EXISTS `key_strings` (
   `key_str` varchar(100) NOT NULL,
-  PRIMARY KEY (`key_str`)
+  `users_id` int(11) NOT NULL,
+  `type_info` varchar(50) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`key_str`),
+  KEY `users_id` (`users_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `key_strings`
 --
 
-INSERT INTO `key_strings` (`key_str`) VALUES
-  ('kstps_mu');
+INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `created_at`, `updated_at`) VALUES
+  ('gandhar_tot_mu', 32, 'number', 'Gandhar Generation MU', '2017-04-05 00:12:43', '2017-04-05 00:12:43'),
+  ('kaps_tot_mu', 34, 'number', 'KAPS Generation MU', '2017-04-05 00:14:36', '2017-04-05 00:14:36'),
+  ('kawas_tot_mu', 32, 'number', 'Kawas Generation MU', '2017-04-05 00:12:43', '2017-04-05 00:12:43'),
+  ('kstps_tot_mu', 32, 'number', 'KSTPS Generation MU', '2017-04-04 23:54:44', '2017-04-04 23:55:43'),
+  ('mouda_tot_mu', 32, 'number', 'Mouda Generation MU', '2017-04-05 00:12:43', '2017-04-05 00:12:43'),
+  ('sipat_tot_mu', 32, 'number', 'Sipat Generation MU', '2017-04-04 23:54:44', '2017-04-04 23:54:44'),
+  ('ssp_tot_mu', 33, 'number', 'SSP Generation MU', '2017-04-05 00:14:36', '2017-04-05 00:14:36'),
+  ('taps_tot_mu', 35, 'number', 'TAPS Generation MU', '2017-04-05 00:19:26', '2017-04-05 00:19:26'),
+  ('vstps_tot_mu', 32, 'number', 'VSTPS Generation MU', '2017-04-05 00:12:43', '2017-04-05 00:12:43');
 
 -- --------------------------------------------------------
 
@@ -109,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `emailid` (`emailid`),
   KEY `role_id` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -117,16 +138,38 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `username`, `emailid`, `password`, `role_id`, `created_at`, `updated_at`, `is_verified`) VALUES
   (7, 'sudhir', 'nagasudhirpulla@gmail', 'pullasudhir', NULL, '2016-11-22 08:07:32', '2017-01-07 02:17:41', 1),
-  (8, 'pradeep', 'psanodiya@gmail.com', 'abc123', NULL, '2016-11-22 08:08:59', '2016-11-22 08:08:59', 0),
-  (24, 'ghggj', 'nagasudhirpulla@gmail.co', 'gghgHGJHGH', NULL, '2016-12-04 01:33:21', '2017-01-07 00:04:25', 0),
-  (25, 'hgjh', 'ghgj@hjhjg.com', 'asdf', NULL, '2017-01-07 01:34:40', '2017-01-07 01:34:40', 0),
-  (30, 'ghgugj', 'nagasudhirpulla@gmail.com', 'asdf', NULL, '2017-01-07 23:25:23', '2017-01-07 23:25:23', 0),
   (31, 'admin', 'nagasudh@j', 'abc123', 2, '2017-04-02 15:39:47', '2017-04-02 15:39:47', 1),
-  (32, 'ntpc', 'ntpc@gmail.com', 'ntpc', 1, '2017-04-02 19:08:37', '2017-04-02 19:08:37', 0);
+  (32, 'ntpc', 'ntpc@gmail.com', 'ntpc', 1, '2017-04-02 19:08:37', '2017-04-02 19:08:37', 0),
+  (33, 'ssp', 'ssp@as', 'ssp', 1, '2017-04-04 09:38:24', '2017-04-04 09:38:24', 0),
+  (34, 'kaps', 'kaps@as', 'kaps', 1, '2017-04-04 09:38:24', '2017-04-04 09:38:24', 0),
+  (35, 'taps', 'taps@as', 'taps', 1, '2017-04-04 09:38:24', '2017-04-04 09:38:24', 0),
+  (36, 'cgpl', 'cgpl@as', 'cgpl', 1, '2017-04-04 09:38:24', '2017-04-04 09:38:24', 0),
+  (37, 'sasan', 'sasan@as', 'sasan', 1, '2017-04-04 09:38:24', '2017-04-04 09:38:24', 0),
+  (38, 'nspcl', 'nspcl@as', 'nspcl', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (39, 'lanco', 'lanco@as', 'lanco', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (40, 'jpl', 'jpl@as', 'jpl', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (41, 'ksk', 'ksk@as', 'ksk', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (42, 'rkm', 'rkm@as', 'rkm', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (43, 'trn', 'trn@as', 'trn', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (44, 'mbpower', 'mbpower@as', 'mbpower', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (45, 'sks', 'sks@as', 'sks', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (46, 'jpltamnar', 'jpltamnar@as', 'jpltamnar', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (47, 'dgen', 'dgen@as', 'dgen', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (48, 'rgppl', 'rgppl@as', 'rgppl', 1, '2017-04-04 15:36:42', '2017-04-04 15:36:42', 0),
+  (49, 'jhabua', 'jhabua@as', 'jhabua', 1, '2017-04-04 15:39:33', '2017-04-04 15:39:33', 0),
+  (50, 'balco', 'balco@as', 'balco', 1, '2017-04-04 15:39:33', '2017-04-04 15:39:33', 0),
+  (51, 'essarmahan', 'essarmahan@as', 'essarmahan', 1, '2017-04-04 15:39:33', '2017-04-04 15:39:33', 0),
+  (52, 'vandana', 'vandana@as', 'vandana', 1, '2017-04-04 15:39:33', '2017-04-04 15:39:33', 0);
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `key_strings`
+--
+ALTER TABLE `key_strings`
+ADD CONSTRAINT `key_strings_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`

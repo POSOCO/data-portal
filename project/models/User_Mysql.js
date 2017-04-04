@@ -20,7 +20,7 @@ exports.get = function (id, done) {
 };
 
 exports.getAll = function (done) {
-    db.get().query(SQLHelper.createSQLGetString('users', ['username', 'password'], [], []), function (err, rows) {
+    db.get().query(SQLHelper.createSQLGetString('users', ['id', 'username', 'password'], [], []), function (err, rows) {
         if (err) return done(err);
         done(null, rows);
     })

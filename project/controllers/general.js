@@ -3,6 +3,7 @@ var router = express.Router();
 var Email_Token = require('../models/email_token.js');
 var Password_token = require('../models/password_change_request.js');
 var User = require('../models/User_Mysql');
+var KeyData = require('../models/key_string');
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
@@ -25,79 +26,23 @@ router.get('/signupemailsent', function (req, res) {
 router.get('/home', function (req, res) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
     if ((typeof req.user != 'undefined') && (req.user != null)) {
-        if ((req.user.username == 'ntpc')) {
-            var genList = [
-                {
-                    key: "time", str: "Date (yyyy-mm-dd)", type: "text"
+        KeyData.getByUser(req.user.id, function (err, keyData) {
+            if (err) {
+                return next(err);
+            }
+            var genList = [];
+            if (keyData != null && keyData.constructor === Array && keyData.length > 0) {
+                genList.push({key: "time", str: "Date (yyyy-mm-dd)", type: "text"});
+                for (var i = 0; i < keyData.length; i++) {
+                    genList.push({
+                        key: keyData[i]["key_str"],
+                        str: keyData[i]["description"],
+                        type: keyData[i]["type_info"]
+                    });
                 }
-                ,
-                {
-                    key: "kstps_tot_mu", str: "KSTPS Generation MU", type: "number"
-                }
-                ,
-                {
-                    key: "sipat_tot_mu", str: "Sipat Generation MU", type: "number"
-                }
-                ,
-                {
-                    key: "vstps_tot_mu", str: "VSTPS Generation MU", type: "number"
-                }
-                ,
-                {
-                    key: "kawas_tot_mu", str: "Kawas Generation MU", type: "number"
-                }
-                ,
-                {
-                    key: "gandhar_tot_mu", str: "Gandhar Generation MU", type: "number"
-                }
-                ,
-                {
-                    key: "mouda_tot_mu", str: "Mouda Generation MU", type: "number"
-                }
-            ];
+            }
             res.render('home-gen', {user: req.user, genList: genList});
-        } else if (req.user.username == 'cgpl') {
-            genList = [{
-                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
-            }, {
-                key: "cgpl_tot_mu", str: "CGPL Generation MU", type: "number"
-            }];
-            res.render('home-gen', {user: req.user, genList: genList});
-
-        } else if (req.user.username == 'sasan') {
-            genList = [{
-                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
-            }, {
-                key: "sasan_tot_mu", str: "SASAN Generation MU", type: "number"
-            }];
-            res.render('home-gen', {user: req.user, genList: genList});
-
-        } else if (req.user.username == 'ssp') {
-            genList = [{
-                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
-            }, {
-                key: "ssp_tot_mu", str: "SSP Generation MU", type: "number"
-            }];
-            res.render('home-gen', {user: req.user, genList: genList});
-
-        } else if (req.user.username == 'kaps') {
-            genList = [{
-                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
-            }, {
-                key: "kaps_tot_mu", str: "KAPS Generation MU", type: "number"
-            }];
-            res.render('home-gen', {user: req.user, genList: genList});
-
-        } else if (req.user.username == 'taps') {
-            genList = [{
-                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
-            }, {
-                key: "taps_tot_mu", str: "TAPS Generation MU", type: "number"
-            }];
-            res.render('home-gen', {user: req.user, genList: genList});
-        } else {
-            res.render('home', {user: req.user});
-        }
+        });
     }
     else {
         res.render('home', {user: req.user});
@@ -108,6 +53,20 @@ router.get('/admin', function (req, res) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
     res.render('admin', {user: req.user});
 });
+
+router.get('/key-manager', function (req, res) {
+    if ((typeof req.user != 'undefined') && (req.user != null) && (req.user.username == 'admin')) {
+        User.getAll(function (err, consts) {
+            if (err) {
+                return next(err);
+            }
+            res.render('key-manager', {user: req.user, consts: consts});
+        });
+    } else {
+        res.redirect('/home');
+    }
+});
+
 
 router.get('/frgtpass', function (req, res) {
     res.render('frgtpass');
