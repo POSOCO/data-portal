@@ -15,7 +15,7 @@ router.get('/signup', function (req, res) {
 
 router.get('/logout', function (req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 router.post('/login', passport.authenticate('local-login', {

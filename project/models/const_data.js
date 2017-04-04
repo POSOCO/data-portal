@@ -19,7 +19,7 @@ exports.get = function (id, done) {
 exports.getByKey = function (key_str, done) {
     var sql = squel.select()
         .from(tableName);
-    if (key_str != null ) {//qualifies if key_str != "" and key_str!=null
+    if (key_str != null) {//qualifies if key_str != "" and key_str!=null
         sql.where("key_string = " + key_str);
     }
     //console.log("sql for Approval getByName is " + sql);
@@ -33,7 +33,7 @@ exports.getByDate = function (date_str, done) {
     //todo if date given search between this date 00 hrs and next day 00 hrs using sql query
     var sql = squel.select()
         .from(tableName);
-    if (date_str != null ) {//qualifies if date_str != "" and date_str!=null
+    if (date_str != null) {//qualifies if date_str != "" and date_str!=null
         sql.where("time = " + date_str);
     }
     //console.log("sql for Approval getByName is " + sql);
@@ -67,20 +67,32 @@ exports.createArray = function (time_str, key_str, val_str, done) {
     var keyColName = "key_string";
     var valueColName = "value_string";
 
-    for(var i = 0; i < key_str.length; i++){
-        rowsArray.push({ timeColName : time_str[i], keyColName: key_str[i] , valueColName : val_str[i]});
+    for (var i = 0; i < key_str.length; i++) {
+        var rowObj = {};
+        rowObj[timeColName] = time_str[i];
+        rowObj[keyColName] = key_str[i];
+        rowObj[valueColName] = val_str[i];
+        rowsArray.push(rowObj);
     }
 
     var sql = squel.insert()
         .into(tableName)
         .setFieldsRows(rowsArray);
+    var query = sql.toString();
+    query += " ON DUPLICATE KEY UPDATE ";
 
-    console.log("The constdata create SQL query is " + sql.toString());
-    done(null, "result.insertId");
-    /*db.get().query(sql.toString(), values, function (err, result) {
+    var updateStrs = [];
+    updateStrs.push(valueColName + "=VALUES(" + valueColName + ")");
+
+    query += updateStrs.join(", ");
+
+    console.log("The constdata create SQL query is " + query);
+    //done(null, "result.insertId");
+
+    db.get().query(query, values, function (err, result) {
         if (err) return done(err);
         done(null, result.insertId);
-    });*/
+    });
 };
 
 exports.update = function (id, time_str, key_str, val_str, done) {

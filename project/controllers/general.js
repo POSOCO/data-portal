@@ -24,22 +24,80 @@ router.get('/signupemailsent', function (req, res) {
 
 router.get('/home', function (req, res) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
-    if ((typeof req.user != 'undefined') && (req.user != null) && (req.user.username == 'ntpc')) {
-        var today = new Date();
-        var genList = [
-            {
-                key: "time", str: "Date", type: "text"
-            }
-            ,
-            {
-                key: "kstps_tot_mu", str: "KSTPS Generation MU", type: "number"
-            }
-            ,
-            {
-                key: "sipat_tot_mu", str: "Sipat Generation MU", type: "number"
-            }
-        ];
-        res.render('home-gen', {user: req.user, genList: genList});
+    if ((typeof req.user != 'undefined') && (req.user != null)) {
+        if ((req.user.username == 'ntpc')) {
+            var genList = [
+                {
+                    key: "time", str: "Date (yyyy-mm-dd)", type: "text"
+                }
+                ,
+                {
+                    key: "kstps_tot_mu", str: "KSTPS Generation MU", type: "number"
+                }
+                ,
+                {
+                    key: "sipat_tot_mu", str: "Sipat Generation MU", type: "number"
+                }
+                ,
+                {
+                    key: "vstps_tot_mu", str: "VSTPS Generation MU", type: "number"
+                }
+                ,
+                {
+                    key: "kawas_tot_mu", str: "Kawas Generation MU", type: "number"
+                }
+                ,
+                {
+                    key: "gandhar_tot_mu", str: "Gandhar Generation MU", type: "number"
+                }
+                ,
+                {
+                    key: "mouda_tot_mu", str: "Mouda Generation MU", type: "number"
+                }
+            ];
+            res.render('home-gen', {user: req.user, genList: genList});
+        } else if (req.user.username == 'cgpl') {
+            genList = [{
+                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
+            }, {
+                key: "cgpl_tot_mu", str: "CGPL Generation MU", type: "number"
+            }];
+            res.render('home-gen', {user: req.user, genList: genList});
+
+        } else if (req.user.username == 'sasan') {
+            genList = [{
+                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
+            }, {
+                key: "sasan_tot_mu", str: "SASAN Generation MU", type: "number"
+            }];
+            res.render('home-gen', {user: req.user, genList: genList});
+
+        } else if (req.user.username == 'ssp') {
+            genList = [{
+                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
+            }, {
+                key: "ssp_tot_mu", str: "SSP Generation MU", type: "number"
+            }];
+            res.render('home-gen', {user: req.user, genList: genList});
+
+        } else if (req.user.username == 'kaps') {
+            genList = [{
+                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
+            }, {
+                key: "kaps_tot_mu", str: "KAPS Generation MU", type: "number"
+            }];
+            res.render('home-gen', {user: req.user, genList: genList});
+
+        } else if (req.user.username == 'taps') {
+            genList = [{
+                key: "time", str: "Date (yyyy-mm-dd)", type: "text"
+            }, {
+                key: "taps_tot_mu", str: "TAPS Generation MU", type: "number"
+            }];
+            res.render('home-gen', {user: req.user, genList: genList});
+        } else {
+            res.render('home', {user: req.user});
+        }
     }
     else {
         res.render('home', {user: req.user});

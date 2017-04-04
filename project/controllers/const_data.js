@@ -28,11 +28,29 @@ router.post('/', function (req, res, next) {
 });
 
 router.post('/create', function (req, res, next) {
+    //todo do the date format check as yyyy-mm-dd
     var keys = req["body"]["keys[]"];
     var vals = req["body"]["vals[]"];
+    var timeStrIndex = -1;
 
-    res.json({'data': req.body});
-    Const_Data.createArray("timeStr", keys, vals, function (err, insertId) {
+    var timeStrs = [];
+    for (var i = 0; i < keys.length; i++) {
+        if (keys[i] == "time") {
+            timeStrIndex = i;
+        }
+    }
+    if (timeStrIndex == -1) {
+        return next(new Error("No key named time in the request"));
+    }
+    var timeKey = vals[timeStrIndex]+" 00:00:00";
+    keys.splice(timeStrIndex, 1);
+    vals.splice(timeStrIndex, 1);
+    for (var i = 0; i < keys.length; i++) {
+        timeStrs.push(timeKey);
+    }
+    //console.log(timeStrs);
+    //res.json({'data': req.body});
+    Const_Data.createArray(timeStrs, keys, vals, function (err, insertId) {
         if (err) {
             return next(err);
         }

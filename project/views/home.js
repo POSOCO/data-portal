@@ -24,6 +24,11 @@ function sendConstData() {
     var elems = document.getElementsByClassName("const-data-input");
     var payLoad = {keys: [], vals: []};
     for (var i = 0; i < elems.length; i++) {
+        var str = "" + elems[i].value;
+        if(str.trim() == ""){
+            toastr["error"]("Please enter all the fields");
+            return;
+        }
         payLoad.keys.push(elems[i].id);
         payLoad.vals.push(elems[i].value);
     }
@@ -32,7 +37,12 @@ function sendConstData() {
         type: 'POST',
         data: payLoad,
         success: function (result) {
+            toastr["success"]("Data successfully saved!");
             console.log(result);
+        },
+        error: function (textStatus, errorThrown) {
+            console.log(textStatus);
+            console.log(errorThrown);
         }
     });
 }
