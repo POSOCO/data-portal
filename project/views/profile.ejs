@@ -8,7 +8,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Home Page</title>
+    <title>Profile Page</title>
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,50 +44,30 @@
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="#">Home</a></li>
+                        <li><i class="fa fa-user"></i>Profile</li>
                     </ol>
                 </div>
             </div>
             <!-- page start-->
-            <!-- Form validations -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            Generation Data
-                        </header>
-                        <div class="panel-body">
-                            <div class="form">
-                                <form class="form-validate form-horizontal" id="feedback_form" action="#">
-                                    <% if (genList) { %>
-                                    <% for(var i = 0; i < genList.length; i++) { %>
-                                    <div class="form-group ">
-                                        <label for="<%= genList[i].key %>"
-                                               class="control-label col-lg-2"><%= genList[i].str %> <span
-                                                    class="required">*</span></label>
-
-                                        <div class="col-lg-10">
-                                            <input class="form-control const-data-input" id="<%= genList[i].key %>"
-                                                   name="<%= genList[i].key %>"
-                                                   type="<%= genList[i].type %>" required/>
-                                        </div>
-                                    </div>
-                                    <% } %>
-                                    <% } %>
-                                    <div class="form-group">
-                                        <div class="col-lg-offset-2 col-lg-10">
-                                            <button class="btn btn-primary" type="button" onclick="sendConstData()">
-                                                Save
-                                            </button>
-                                            <button class="btn btn-default" type="button">Cancel</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
-                    </section>
-                </div>
-            </div>
+            <section class="panel">
+                <header class="panel-heading">
+                    User Profile
+                </header>
+                <table class="table table-hover">
+                    <tr>
+                        <td>Username</td>
+                        <td><%= user.username %></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><%= user.emailid %></td>
+                    </tr>
+                    <tr>
+                        <td>Created At</td>
+                        <td><%= user.created_at %></td>
+                    </tr>
+                </table>
+            </section>
             <!-- page end-->
         </section>
     </section>
@@ -116,7 +96,6 @@
 <script src="js/toastr.min.js" type="text/javascript"></script>
 <!--custome script for all page-->
 <script src="js/scripts.js"></script>
-<script src="home.js"></script>
 
 
 </body>

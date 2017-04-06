@@ -11,6 +11,18 @@ router.get('/', function (req, res) {
     res.redirect('/home');
 });
 
+router.get('/index', function (req, res) {
+    res.redirect('/home');
+});
+
+router.get('/profile', function (req, res) {
+    if(req.user == null){
+        res.redirect('/login');
+    }else{
+        res.render('profile', {user: req.user});
+    }
+});
+
 router.get('/about', function (req, res) {
     res.render('about');
 });
