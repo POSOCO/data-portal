@@ -7,10 +7,14 @@ document.onreadystatechange = function () {
         var dateElem = document.getElementById("time");
         if (dateElem) {
             dateElem.value = todayDate.getFullYear() + "-" + makeTwoDigits(todayDate.getMonth() + 1) + "-" + makeTwoDigits(todayDate.getDate());
+            fillKeysFromServer(dateElem.value);
+            $(dateElem).on("change paste keyup", function () {
+                fillKeysFromServer($(this).val());
+            });
+
         }
     }
 };
-
 function makeTwoDigits(x) {
     if (x < 10) {
         return "0" + x;
@@ -55,4 +59,34 @@ function fillFormField(id, val) {
     if (elem != null && elem.classList.contains("const-data-input")) {
         elem.value = val;
     }
+}
+
+function fillKeysFromServer(dateStr) {
+    var elems = document.getElementsByClassName("const-data-input");
+    var payLoad = {keys: [], dateStr: dateStr};
+    for (var i = 0; i < elems.length; i++) {
+        if (elems[i].id != "time") {
+            elems[i].value = "";
+            payLoad.keys.push(elems[i].id);
+        }
+    }
+    $.ajax({
+        url: "/api/const_data/getByKeys",
+        type: 'GET',
+        data: payLoad,
+        success: function (result) {
+            toastr["info"]("Data received from server");
+            console.log(result);
+            var dataArray = result.data;
+            if (typeof dataArray != 'undefined' && dataArray != null && dataArray.constructor === Array) {
+                for (var i = 0; i < dataArray.length; i++) {
+                    fillFormField(dataArray[i]["key_string"], dataArray[i]["value_string"]);
+                }
+            }
+        },
+        error: function (textStatus, errorThrown) {
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
 }

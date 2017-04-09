@@ -12,6 +12,19 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/getByKeys', function (req, res, next) {
+    //console.log("get req params for get single are " + JSON.stringify(req.query));
+    var keys = req.query.keys;
+    var dateStr = req.query.dateStr;
+    if (keys != null && keys.constructor === Array && dateStr != null) {
+        Const_Data.getByKeyDate(keys, dateStr + " 00:00:00", function (err, rows) {
+            if (err) {
+                return next(err);
+            }
+            res.json({'data': rows});
+        });
+    }
+});
 
 router.post('/', function (req, res, next) {
     var time_str = req.body["time_str"];
@@ -42,7 +55,7 @@ router.post('/create', function (req, res, next) {
     if (timeStrIndex == -1) {
         return next(new Error("No key named time in the request"));
     }
-    var timeKey = vals[timeStrIndex]+" 00:00:00";
+    var timeKey = vals[timeStrIndex] + " 00:00:00";
     keys.splice(timeStrIndex, 1);
     vals.splice(timeStrIndex, 1);
     for (var i = 0; i < keys.length; i++) {

@@ -9,3 +9,4 @@ WRLDC data entry portal
 4. States IRE keys not entered
 5. Add login and profile links in the side bar -- done
 6. Use partials -- done
+7. Load the data if present for a date -- done
