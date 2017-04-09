@@ -73,4 +73,14 @@ function handleESIL() {
     WriteLineConsole("ESIL 3HrsDemand is " + dem3hrs_ESIL);
     WriteLineConsole("ESIL 19HrsDemand is " + dem19hrs_ESIL);
     WriteLineConsole("ESIL 20HrsDemand is " + dem20hrs_ESIL);
+    fillESILForm();
+}
+
+function fillESILForm(){
+    fillFormField('drawal_ESIL', drawal_ESIL);
+    fillFormField('maxDemTime_ESIL', maxDemTime_ESIL);
+    fillFormField('maxDem_ESIL', maxDem_ESIL);
+    fillFormField('dem3hrs_ESIL', dem3hrs_ESIL);
+    fillFormField('dem19hrs_ESIL', dem19hrs_ESIL);
+    fillFormField('dem20hrs_ESIL', dem20hrs_ESIL);
 }

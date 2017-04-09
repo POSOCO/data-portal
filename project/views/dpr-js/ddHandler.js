@@ -73,4 +73,14 @@ function handleDD() {
     WriteLineConsole("DD 3HrsDemand is " + dem3hrs_DD);
     WriteLineConsole("DD 19HrsDemand is " + dem19hrs_DD);
     WriteLineConsole("DD 20HrsDemand is " + dem20hrs_DD);
+    fillDDForm();
+}
+
+function fillDDForm(){
+    fillFormField('drawal_DD', drawal_DD);
+    fillFormField('maxDemTime_DD', maxDemTime_DD);
+    fillFormField('maxDem_DD', maxDem_DD);
+    fillFormField('dem3hrs_DD', dem3hrs_DD);
+    fillFormField('dem19hrs_DD', dem19hrs_DD);
+    fillFormField('dem20hrs_DD', dem20hrs_DD);
 }

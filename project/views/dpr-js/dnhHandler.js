@@ -72,5 +72,14 @@ function handleDNH() {
     WriteLineConsole("DNH 3HrsDemand is " + dem3hrs_DNH);
     WriteLineConsole("DNH 19HrsDemand is " + dem19hrs_DNH);
     WriteLineConsole("DNH 20HrsDemand is " + dem20hrs_DNH);
+    fillDNHForm();
+}
 
+function fillDNHForm(){
+    fillFormField('drawal_DNH', drawal_DNH);
+    fillFormField('maxDemTime_DNH', maxDemTime_DNH);
+    fillFormField('maxDem_DNH', maxDem_DNH);
+    fillFormField('dem3hrs_DNH', dem3hrs_DNH);
+    fillFormField('dem19hrs_DNH', dem19hrs_DNH);
+    fillFormField('dem20hrs_DNH', dem20hrs_DNH);
 }

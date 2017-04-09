@@ -68,7 +68,11 @@
                                         <div class="col-lg-10">
                                             <input class="form-control const-data-input" id="<%= genList[i].key %>"
                                                    name="<%= genList[i].key %>"
-                                                   type="<%= genList[i].type %>" required/>
+                                                   type="<%= genList[i].type %>" required
+                                                    <% if(genList[i].type == "number"){ %>
+                                                    <%= "step=.001" %>
+                                                    <% } %>
+                                                    />
                                         </div>
                                     </div>
                                     <% } %>

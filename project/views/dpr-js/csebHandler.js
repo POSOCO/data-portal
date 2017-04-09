@@ -128,4 +128,22 @@ function handleCSEB() {
     WriteLineConsole("CSEB 19HrsDemand is " + dem19hrs_CSEB);
     WriteLineConsole("CSEB 20HrsDemand is " + dem20hrs_CSEB);
     WriteLineConsole("CSEB LoadShedding is " + shortFallMUs_CSEB + " MUs");
+    fillCSEBForm();
+}
+
+function fillCSEBForm(){
+    fillFormField('hydroGen_CSEB', hydroGen_CSEB);
+    fillFormField('solarGen_CSEB', solarGen_CSEB);
+    fillFormField('drawal_CSEB', drawal_CSEB);
+    fillFormField('availability_CSEB', availability_CSEB);
+    fillFormField('maxDemTime_CSEB', maxDemTime_CSEB);
+    fillFormField('maxDem_CSEB', maxDem_CSEB);
+    fillFormField('dem3hrs_CSEB', dem3hrs_CSEB);
+    fillFormField('dem19hrs_CSEB', dem19hrs_CSEB);
+    fillFormField('dem20hrs_CSEB', dem20hrs_CSEB);
+    fillFormField('ls3hrs_CSEB', loadShedding24hrs_CSEB[2]);
+    fillFormField('ls19hrs_CSEB', loadShedding24hrs_CSEB[18]);
+    fillFormField('ls20hrs_CSEB', loadShedding24hrs_CSEB[19]);
+    fillFormField('lsMaxDem_CSEB', loadShedding24hrs_CSEB[maxDemTime_CSEB - 1]);
+    fillFormField('shortFallMUs_CSEB', shortFallMUs_CSEB);
 }

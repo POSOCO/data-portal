@@ -107,4 +107,20 @@ function handleGoa() {
     WriteLineConsole("GOA 3HrsDemand is " + dem3hrs_GOA);
     WriteLineConsole("GOA 19HrsDemand is " + dem19hrs_GOA);
     WriteLineConsole("GOA 20HrsDemand is " + dem20hrs_GOA);
+    fillGOAForm();
+}
+
+function fillGOAForm(){
+    fillFormField('stateGen_GOA', stateGen_GOA);
+    fillFormField('drawal_GOA', drawal_GOA);
+    fillFormField('shortFallMUs_GOA', shortFallMUs_GOA);
+    fillFormField('maxDemTime_GOA', maxDemTime_GOA);
+    fillFormField('maxDem_GOA', maxDem_GOA);
+    fillFormField('dem3hrs_GOA', dem3hrs_GOA);
+    fillFormField('dem19hrs_GOA', dem19hrs_GOA);
+    fillFormField('dem20hrs_GOA', dem20hrs_GOA);
+    fillFormField('ls3hrs_GOA', loadShedding24hrs_GOA[2]);
+    fillFormField('ls19hrs_GOA', loadShedding24hrs_GOA[18]);
+    fillFormField('ls20hrs_GOA', loadShedding24hrs_GOA[19]);
+    fillFormField('lsMaxDem_GOA', loadShedding24hrs_GOA[maxDemTime_GOA - 1]);
 }

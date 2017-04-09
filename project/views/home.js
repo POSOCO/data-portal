@@ -25,7 +25,7 @@ function sendConstData() {
     var payLoad = {keys: [], vals: []};
     for (var i = 0; i < elems.length; i++) {
         var str = "" + elems[i].value;
-        if(str.trim() == ""){
+        if (str.trim() == "") {
             toastr["error"]("Please enter all the fields");
             return;
         }
@@ -45,4 +45,14 @@ function sendConstData() {
             console.log(errorThrown);
         }
     });
+}
+
+function fillFormField(id, val) {
+    if (val != null && !isNaN(val)) {
+        val = Math.round(val * 1000) / 1000;
+    }
+    var elem = document.getElementById(id);
+    if (elem != null && elem.classList.contains("const-data-input")) {
+        elem.value = val;
+    }
 }

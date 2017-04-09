@@ -191,4 +191,23 @@ function handleMaharashtra() {
     WriteLineConsole("Maharashtra 19 hrs frequency is " + frequencies_MSEB[18]);
     WriteLineConsole("Maharashtra 20 hrs frequency is " + frequencies_MSEB[19]);
     WriteLineConsole("Maharashtra frequencies are " + frequencies_MSEB);
+    fillMSEBForm();
+}
+
+function fillMSEBForm(){
+    fillFormField('hydroGen_MSEB', hydroGen_MSEB);
+    fillFormField('solarGen_MSEB', solarGen_MSEB);
+    fillFormField('windGen_MSEB', windGen_MSEB);
+    fillFormField('drawal_MSEB', drawal_MSEB);
+    fillFormField('availability_MSEB', availability_MSEB);
+    fillFormField('shortFallMUs_MSEB', shortFallMUs_MSEB);
+    fillFormField('maxDemTime_MSEB', maxDemTime_MSEB);
+    fillFormField('maxDem_MSEB', maxDem_MSEB);
+    fillFormField('dem3hrs_MSEB', dem3hrs_MSEB);
+    fillFormField('dem19hrs_MSEB', dem19hrs_MSEB);
+    fillFormField('dem20hrs_MSEB', dem20hrs_MSEB);
+    fillFormField('ls3hrs_MSEB', loadShedding24hrs_MSEB[2]);
+    fillFormField('ls19hrs_MSEB', loadShedding24hrs_MSEB[18]);
+    fillFormField('ls20hrs_MSEB', loadShedding24hrs_MSEB[19]);
+    fillFormField('lsMaxDem_MSEB', loadShedding24hrs_MSEB[maxDemTime_MSEB - 1]);
 }

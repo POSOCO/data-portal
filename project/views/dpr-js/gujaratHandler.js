@@ -194,4 +194,19 @@ function handleGujarat(){
     WriteLineConsole("GUJARAT 3HrsDemand is " + dem3hrs_GEB);
     WriteLineConsole("GUJARAT 19HrsDemand is " + dem19hrs_GEB);
     WriteLineConsole("GUJARAT 20HrsDemand is " + dem20hrs_GEB);
+    fillGEBForm();
+}
+
+function fillGEBForm(){
+    fillFormField('hydroGen_GEB', hydroGen_GEB);
+    fillFormField('windGen_GEB', windGen_GEB);
+    fillFormField('solarGen_GEB', solarGen_GEB);
+    fillFormField('availability_GEB', availability_GEB);
+    fillFormField('requirement_GEB', requirement_GEB);
+    fillFormField('drawal_GEB', drawal_GEB);
+    fillFormField('maxDemTime_GEB', maxDemTime_GEB);
+    fillFormField('maxDem_GEB', maxDem_GEB);
+    fillFormField('dem3hrs_GEB', dem3hrs_GEB);
+    fillFormField('dem19hrs_GEB', dem19hrs_GEB);
+    fillFormField('dem20hrs_GEB', dem20hrs_GEB);
 }

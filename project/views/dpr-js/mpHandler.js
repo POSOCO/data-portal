@@ -143,4 +143,23 @@ function handleMP() {
     WriteLineConsole("MP 19HrsDemand is " + dem19hrs_MP);
     WriteLineConsole("MP 20HrsDemand is " + dem20hrs_MP);
     WriteLineConsole("MP LoadShedding is " + shortFallMUs_MP + " MUs");
+    fillMPForm();
+}
+
+function fillMPForm() {
+    fillFormField('hydroGen_MP', hydroGen_MP);
+    fillFormField('solarGen_MP', solarGen_MP);
+    fillFormField('windGen_MP', windGen_MP);
+    fillFormField('drawal_MP', drawal_MP);
+    fillFormField('availability_MP', availability_MP);
+    fillFormField('shortFallMUs_MP', shortFallMUs_MP);
+    fillFormField('maxDemTime_MP', maxDemTime_MP);
+    fillFormField('maxDem_MP', maxDem_MP);
+    fillFormField('dem3hrs_MP', dem3hrs_MP);
+    fillFormField('dem19hrs_MP', dem19hrs_MP);
+    fillFormField('dem20hrs_MP', dem20hrs_MP);
+    fillFormField('ls3hrs_MP', loadShedding24hrs_MP[2]);
+    fillFormField('ls19hrs_MP', loadShedding24hrs_MP[18]);
+    fillFormField('ls20hrs_MP', loadShedding24hrs_MP[19]);
+    fillFormField('lsMaxDem_MP', loadShedding24hrs_MP[maxDemTime_MP - 1]);
 }
