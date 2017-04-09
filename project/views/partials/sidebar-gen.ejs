@@ -9,21 +9,29 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="sub-menu">
-                <a href="javascript:;" class="">
-                    <i class="icon_document_alt"></i>
-                    <span>Forms</span>
-                    <span class="menu-arrow arrow_carrot-right"></span>
-                </a>
-                <ul class="sub">
-                    <li><a class="" href="#">Form Elements</a></li>
-                    <li><a class="" href="#">Form Validation</a></li>
-                </ul>
-            </li>
             <li class="sub-menu ">
                 <a href="javascript:;" class="">
                     <i class="icon_documents_alt"></i>
                     <span>Pages</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="./contact">Contact Us</a></li>
+                    <% if (user != null && user.username == 'admin') { %>
+                    <li><a class="" href="./key-manager">Key Manager</a></li>
+                    <% } %>
+                </ul>
+            </li>
+            <li class="sub-menu ">
+                <a href="javascript:;" class="">
+                    <i class="icon_key_alt"></i>
+                    <span>
+                        <% if (user != null) { %>
+                        <%= user.username %>
+                        <% } else{ %>
+                        Guest
+                        <% } %>
+                    </span>
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
@@ -32,9 +40,6 @@
                     <li><a class="" href="/logout">Logout</a></li>
                     <% } else{ %>
                     <li><a class="" href="/login">LogIn</a></li>
-                    <% } %>
-                    <% if (user != null && user.username == 'admin') { %>
-                    <li><a class="" href="./key-manager">Key Manager</a></li>
                     <% } %>
                 </ul>
             </li>

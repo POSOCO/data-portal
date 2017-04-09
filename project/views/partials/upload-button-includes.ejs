@@ -1,0 +1,23 @@
+<% if(user != null && (user.username == "cseb" || user.username == "dd" || user.username == "dnh" || user.username == "esil" || user.username == "geb" || user.username == "goa" || user.username == "mpseb" || user.username == "mseb")){ %>
+<script src="../dpr-js/csvToArray.js"></script>
+<script src="../dpr-js/consoleFunctions.js"></script>
+<script src="../dpr-js/dprReader.js"></script>
+<script src="../dpr-js/dpr-index.js"></script>
+<% if (user.username == "mseb"){ %>
+<script src="../dpr-js/msebHandler.js"></script>
+<% }else if (user.username == "geb"){ %>
+<script src="../dpr-js/gujaratHandler.js"></script>
+<% }else if (user.username == "goa"){ %>
+<script src="../dpr-js/goaHandler.js"></script>
+<% }else if (user.username == "dd"){ %>
+<script src="../dpr-js/ddHandler.js"></script>
+<% }else if (user.username == "dnh"){ %>
+<script src="../dpr-js/dnhHandler.js"></script>
+<% }else if (user.username == "esil"){ %>
+<script src="../dpr-js/esilHandler.js"></script>
+<% }else if (user.username == "mp"){ %>
+<script src="../dpr-js/mpHandler.js"></script>
+<% }else if (user.username == "cseb"){ %>
+<script src="../dpr-js/csebHandler.js"></script>
+<% } %>
+<% } %>

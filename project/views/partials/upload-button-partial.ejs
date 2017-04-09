@@ -1,0 +1,87 @@
+<% if(user != null && (user.username == "cseb" || user.username == "dd" || user.username == "dnh" || user.username == "esil" || user.username == "geb" || user.username == "goa" || user.username == "mpseb" || user.username == "mseb")){ %>
+<table class="table" style="max-width: 300px;">
+    <% if (user.username == "cseb"){ %>
+    <tr>
+        <td>Chhattisgarh</td>
+        <td><input type="file" id="ChhattisgarhFileInput"></td>
+        <td>
+            <button id="ChhattisgarhButton" onclick="fetchFromArrays(0)"
+                    class="generate_button">FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "dd"){ %>
+    <tr>
+        <td>DD</td>
+        <td><input type="file" id="DDFileInput"></td>
+        <td>
+            <button id="DDButton" onclick="fetchFromArrays(1)" class="generate_button">
+                FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "dnh"){ %>
+    <tr>
+        <td>DNH</td>
+        <td><input type="file" id="DNHFileInput"></td>
+        <td>
+            <button id="DNHButton" onclick="fetchFromArrays(2)" class="generate_button">
+                FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "esil"){ %>
+    <tr>
+        <td>ESIL</td>
+        <td><input type="file" id="ESILFileInput"></td>
+        <td>
+            <button id="ESILButton" onclick="fetchFromArrays(3)"
+                    class="generate_button">
+                FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "goa"){ %>
+    <tr>
+        <td>Goa</td>
+        <td><input type="file" id="GoaFileInput"></td>
+        <td>
+            <button id="GoaButton" onclick="fetchFromArrays(4)" class="generate_button">
+                FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "geb"){ %>
+    <tr>
+        <td>Gujarat</td>
+        <td><input type="file" id="GujaratFileInput"></td>
+        <td>
+            <button id="GujaratButton" onclick="fetchFromArrays(5)"
+                    class="generate_button">
+                FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "mpseb"){ %>
+    <tr>
+        <td>Madhya Pradesh</td>
+        <td><input type="file" id="MadhyaPradeshFileInput" multiple></td>
+        <td>
+            <button id="MadhyaPradeshButton" onclick="fetchFromArrays(6)"
+                    class="generate_button">FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "mseb"){ %>
+    <tr>
+        <td>Maharashtra</td>
+        <td><input type="file" id="MaharashtraFileInput" multiple></td>
+        <td>
+            <button id="MaharashtraButton" onclick="fetchFromArrays(7)"
+                    class="generate_button">FillForm
+            </button>
+        </td>
+    </tr>
+    <% } %>
+</table>
+<% } %>

@@ -16,9 +16,9 @@ router.get('/index', function (req, res) {
 });
 
 router.get('/profile', function (req, res) {
-    if(req.user == null){
+    if (req.user == null) {
         res.redirect('/login');
-    }else{
+    } else {
         res.render('profile', {user: req.user});
     }
 });
@@ -28,7 +28,7 @@ router.get('/about', function (req, res) {
 });
 
 router.get('/contact', function (req, res) {
-    res.render('contact');
+    res.render('contact', {user: req.user});
 });
 
 router.get('/signupemailsent', function (req, res) {

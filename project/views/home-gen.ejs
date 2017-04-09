@@ -36,7 +36,6 @@
 <section id="container" class="">
     <% include ./partials/header-gen.ejs %>
     <% include ./partials/sidebar-gen.ejs %>
-
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
@@ -56,6 +55,7 @@
                             Generation Data
                         </header>
                         <div class="panel-body">
+                            <% include ./partials/upload-button-partial.ejs %>
                             <div class="form">
                                 <form class="form-validate form-horizontal" id="feedback_form" action="#">
                                     <% if (genList) { %>
@@ -117,7 +117,6 @@
 <!--custome script for all page-->
 <script src="js/scripts.js"></script>
 <script src="home.js"></script>
-
-
+<% include ./partials/upload-button-includes.ejs %>
 </body>
 </html>
