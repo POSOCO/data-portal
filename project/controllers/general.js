@@ -66,6 +66,11 @@ router.get('/admin', function (req, res) {
     res.render('admin', {user: req.user});
 });
 
+router.get('/state-data', function (req, res) {
+    //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
+    res.render('state-data', {user: req.user});
+});
+
 router.get('/key-manager', function (req, res) {
     if ((typeof req.user != 'undefined') && (req.user != null) && (req.user.username == 'admin')) {
         User.getAll(function (err, consts) {

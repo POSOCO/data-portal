@@ -148,6 +148,8 @@ function handleMP() {
 
 function fillMPForm() {
     fillFormField('hydroGen_MP', hydroGen_MP);
+    fillFormField('hydroGen1_MP', hydroGen1_MP);
+    fillFormField('hydroGen2_MP', hydroGen2_MP);
     fillFormField('solarGen_MP', solarGen_MP);
     fillFormField('windGen_MP', windGen_MP);
     fillFormField('drawal_MP', drawal_MP);
