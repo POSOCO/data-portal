@@ -6,7 +6,7 @@ router.get('/login', function (req, res) {
     if (req.isAuthenticated()) {
         res.redirect('/');
     }
-    res.render('login.ejs', {message: req.flash('loginMessage')});
+    res.render('login-windy.ejs', {message: req.flash('loginMessage')});
 });
 
 router.get('/signup', function (req, res) {
