@@ -19,7 +19,7 @@ exports.get = function (key_str, done) {
 exports.getByUser = function (user_id, done) {
     var sql = squel.select()
         .from(tableName);
-    if (user_id != null ) {//qualifies if user_id != "" and user_id!=null
+    if (user_id != null) {//qualifies if user_id != "" and user_id!=null
         sql.where("users_id = " + user_id);
     }
     //console.log("sql for Approval getByName is " + sql);
@@ -61,7 +61,7 @@ exports.createArray = function (key_str, key_info, key_desc, user_id, done) {
     var sql = squel.insert()
         .into(tableName)
         .setFieldsRows(rowsArray);
-    var query = sql.toString();
+    var query = sql.toParam().text;
     query += " ON DUPLICATE KEY UPDATE ";
 
     var updateStrs = [];
@@ -75,7 +75,7 @@ exports.createArray = function (key_str, key_info, key_desc, user_id, done) {
     console.log("The keyString array create SQL query is " + query);
     //done(null, "result.insertId");
 
-    db.get().query(query, function (err, result) {
+    db.get().query(query, sql.toParam().values, function (err, result) {
         if (err) return done(err);
         done(null, result.insertId);
     });
