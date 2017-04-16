@@ -1,4 +1,4 @@
-<% if(user != null && (user.username == "cseb" || user.username == "dd" || user.username == "dnh" || user.username == "esil" || user.username == "geb" || user.username == "goa" || user.username == "mpseb" || user.username == "mseb")){ %>
+<% if(user != null && (user.username == "cseb" || user.username == "dd" || user.username == "dnh" || user.username == "esil" || user.username == "geb" || user.username == "goa" || user.username == "mpseb" || user.username == "mseb" || user.username == "cpccv")){ %>
 <script src="../dpr-js/csvToArray.js"></script>
 <script src="../dpr-js/consoleFunctions.js"></script>
 <script src="../dpr-js/dprReader.js"></script>
@@ -19,5 +19,7 @@
 <script src="../dpr-js/mpHandler.js"></script>
 <% }else if (user.username == "cseb"){ %>
 <script src="../dpr-js/csebHandler.js"></script>
+<% }else if (user.username == "cpccv"){ %>
+<script src="../dpr-js/ireDataHandler.js"></script>
 <% } %>
 <% } %>

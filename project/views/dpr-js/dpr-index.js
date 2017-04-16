@@ -2,7 +2,7 @@
  * Created by Nagasudhir on 8/26/2016.
  */
 var dprReader = new DPRReader();
-var consIDs = ["ChhattisgarhFileInput", "DDFileInput", "DNHFileInput", "ESILFileInput", "GoaFileInput", "GujaratFileInput", "MadhyaPradeshFileInput", "MaharashtraFileInput"];
+var consIDs = ["ChhattisgarhFileInput", "DDFileInput", "DNHFileInput", "ESILFileInput", "GoaFileInput", "GujaratFileInput", "MadhyaPradeshFileInput", "MaharashtraFileInput", "CPCCFileInput"];
 dprReader.setConsIDs(consIDs);
 
 var peakHrIndex = 18;
@@ -40,6 +40,8 @@ function fetchFromArrays(ind) {
         handleGujarat();
     } else if (ind == 7) {
         handleMaharashtra();
+    } else if (ind == 8) {
+        handleIRE();
     }
 }
 
@@ -128,4 +130,8 @@ function findNonNullValueToRight(row, searchTagIndex) {
         }
     }
     return "Not Found...";
+}
+
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }

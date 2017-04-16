@@ -1,4 +1,4 @@
-<% if(user != null && (user.username == "cseb" || user.username == "dd" || user.username == "dnh" || user.username == "esil" || user.username == "geb" || user.username == "goa" || user.username == "mpseb" || user.username == "mseb")){ %>
+<% if(user != null && (user.username == "cseb" || user.username == "dd" || user.username == "dnh" || user.username == "esil" || user.username == "geb" || user.username == "goa" || user.username == "mpseb" || user.username == "mseb"|| user.username == "cpccv")){ %>
 <table class="table" style="max-width: 300px;">
     <% if (user.username == "cseb"){ %>
     <tr>
@@ -78,6 +78,16 @@
         <td><input type="file" id="MaharashtraFileInput" multiple></td>
         <td>
             <button id="MaharashtraButton" onclick="fetchFromArrays(7)"
+                    class="generate_button">FillForm
+            </button>
+        </td>
+    </tr>
+    <% }else if (user.username == "cpccv"){ %>
+    <tr>
+        <td>CPCC</td>
+        <td><input type="file" id="CPCCFileInput" multiple></td>
+        <td>
+            <button id="CPCCButton" onclick="fetchFromArrays(8)"
                     class="generate_button">FillForm
             </button>
         </td>

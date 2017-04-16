@@ -27,14 +27,18 @@ function makeTwoDigits(x) {
 function sendConstData() {
     var elems = document.getElementsByClassName("const-data-input");
     var payLoad = {keys: [], vals: []};
+    var pendingFields = [];
     for (var i = 0; i < elems.length; i++) {
         var str = "" + elems[i].value;
         if (str.trim() == "") {
-            toastr["error"]("Please enter all the fields");
-            return;
+            pendingFields.push(elems[i].id);
+            continue;
         }
         payLoad.keys.push(elems[i].id);
         payLoad.vals.push(elems[i].value);
+    }
+    if (pendingFields.length > 0) {
+        toastr["error"]("Please enter " + pendingFields.join(", "));
     }
     $.ajax({
         url: "/api/const_data/create",
