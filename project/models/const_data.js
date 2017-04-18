@@ -80,7 +80,6 @@ exports.create = function (time_str, key_str, val_str, done) {
 };
 
 exports.createArray = function (time_str, key_str, val_str, done) {
-    //todo complete this
     var insertColumns = tableColumns.slice(1, tableColumns.length);
     var rowsArray = [];
     var timeColName = "time";
@@ -98,7 +97,7 @@ exports.createArray = function (time_str, key_str, val_str, done) {
     var sql = squel.insert()
         .into(tableName)
         .setFieldsRows(rowsArray);
-    var query = sql.toString();
+    var query = sql.toParam().text;
     query += " ON DUPLICATE KEY UPDATE ";
 
     var updateStrs = [];
@@ -109,7 +108,7 @@ exports.createArray = function (time_str, key_str, val_str, done) {
     console.log("The constdata create SQL query is " + query);
     //done(null, "result.insertId");
 
-    db.get().query(query, function (err, result) {
+    db.get().query(query, sql.toParam().values, function (err, result) {
         if (err) return done(err);
         done(null, result.insertId);
     });
