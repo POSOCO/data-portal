@@ -1,0 +1,15 @@
+hydroGen_MSEB
+solarGen_MSEB
+windGen_MSEB
+drawal_MSEB
+availability_MSEB
+shortFallMUs_MSEB
+maxDemTime_MSEB
+maxDem_MSEB
+dem3hrs_MSEB
+dem19hrs_MSEB
+dem20hrs_MSEB
+ls3hrs_MSEB
+ls19hrs_MSEB
+ls20hrs_MSEB
+lsMaxDem_MSEB

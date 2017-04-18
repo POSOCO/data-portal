@@ -1,0 +1,6 @@
+drawal_DNH
+maxDemTime_DNH
+maxDem_DNH
+dem3hrs_DNH
+dem19hrs_DNH
+dem20hrs_DNH

@@ -1,0 +1,15 @@
+hydroGen_MP
+solarGen_MP
+windGen_MP
+drawal_MP
+availability_MP
+shortFallMUs_MP
+maxDemTime_MP
+maxDem_MP
+dem3hrs_MP
+dem19hrs_MP
+dem20hrs_MP
+ls3hrs_MP
+ls19hrs_MP
+ls20hrs_MP
+lsMaxDem_MP

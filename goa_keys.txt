@@ -1,0 +1,12 @@
+stateGen_GOA
+drawal_GOA
+shortFallMUs_GOA
+maxDemTime_GOA
+maxDem_GOA
+dem3hrs_GOA
+dem19hrs_GOA
+dem20hrs_GOA
+ls3hrs_GOA
+ls19hrs_GOA
+ls20hrs_GOA
+lsMaxDem_GOA

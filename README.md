@@ -2,6 +2,12 @@
 # data-portal
 WRLDC data entry portal
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=tqX6KOYXNvc">
+<img src="http://img.youtube.com/vi/tqX6KOYXNvc/0.jpg" 
+alt="https://youtu.be/tqX6KOYXNvc" width="480" height="360" border="10" /></a>
+
+Demo Video youtube link https://youtu.be/tqX6KOYXNvc
+
 ## Todos
 1. Profile Page pending -- done
 2. State data entry csv upload pending -- done

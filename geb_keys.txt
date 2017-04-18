@@ -1,0 +1,11 @@
+hydroGen_GEB
+windGen_GEB
+solarGen_GEB
+availability_GEB
+requirement_GEB
+drawal_GEB
+maxDemTime_GEB
+maxDem_GEB
+dem3hrs_GEB
+dem19hrs_GEB
+dem20hrs_GEB

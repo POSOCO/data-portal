@@ -1,0 +1,6 @@
+drawal_DD
+maxDemTime_DD
+maxDem_DD
+dem3hrs_DD
+dem19hrs_DD
+dem20hrs_DD

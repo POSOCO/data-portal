@@ -1,0 +1,14 @@
+hydroGen_CSEB
+solarGen_CSEB
+drawal_CSEB
+availability_CSEB
+maxDemTime_CSEB
+maxDem_CSEB
+dem3hrs_CSEB
+dem19hrs_CSEB
+dem20hrs_CSEB
+ls3hrs_CSEB
+ls19hrs_CSEB
+ls20hrs_CSEB
+lsMaxDem_CSEB
+shortFallMUs_CSEB
