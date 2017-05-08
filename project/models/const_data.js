@@ -50,7 +50,7 @@ exports.getByKeyDateRange = function (key_str_array, dateStr, dateStrEnd, done) 
         }
         q.and(q2);
     }
-    sql.where(q, {dontQuote: true});
+    sql.where(q, {dontQuote: true}).order("time");
     //console.log("sql for Approval getByName is " + JSON.stringify(sql.toParam()));
     db.get().query(sql.toParam().text, sql.toParam().values, function (err, rows) {
         if (err) return done(err);

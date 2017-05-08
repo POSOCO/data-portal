@@ -64,6 +64,30 @@ router.get('/home', function (req, res) {
     }
 });
 
+router.get('/trends', function (req, res) {
+    //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
+    var userId = null;
+    if ((typeof req.user != 'undefined') && (req.user != null)) {
+        userId = req.user.id;
+    }
+    KeyData.getByUser(userId, function (err, keyData) {
+        if (err) {
+            return next(err);
+        }
+        var genList = [];
+        if (keyData != null && keyData.constructor === Array && keyData.length > 0) {
+            for (var i = 0; i < keyData.length; i++) {
+                genList.push({
+                    key: keyData[i]["key_str"],
+                    str: keyData[i]["description"],
+                    type: keyData[i]["type_info"]
+                });
+            }
+        }
+        res.render('trends', {user: req.user, genList: genList});
+    });
+});
+
 router.get('/admin', function (req, res) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
     res.render('admin', {user: req.user});
