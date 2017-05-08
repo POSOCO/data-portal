@@ -38,6 +38,9 @@ router.get('/signupemailsent', function (req, res) {
 router.get('/home', function (req, res) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
     if ((typeof req.user != 'undefined') && (req.user != null)) {
+        if(req.user.username == 'cpccv'){
+            return res.render('cpccv-input', {user: req.user});
+        }
         KeyData.getByUser(req.user.id, function (err, keyData) {
             if (err) {
                 return next(err);

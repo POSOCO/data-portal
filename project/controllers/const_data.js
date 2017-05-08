@@ -16,13 +16,24 @@ router.get('/getByKeys', function (req, res, next) {
     //console.log("get req params for get single are " + JSON.stringify(req.query));
     var keys = req.query.keys;
     var dateStr = req.query.dateStr;
+    var dateStrEnd = req.query.toDateStr;
     if (keys != null && keys.constructor === Array && dateStr != null) {
-        Const_Data.getByKeyDate(keys, dateStr + " 00:00:00", function (err, rows) {
-            if (err) {
-                return next(err);
-            }
-            res.json({'data': rows});
-        });
+        if (typeof dateStrEnd == 'undefined' || dateStrEnd == null || dateStrEnd.trim() == "") {
+            Const_Data.getByKeyDate(keys, dateStr + " 00:00:00", function (err, rows) {
+                if (err) {
+                    return next(err);
+                }
+                res.json({'data': rows});
+            });
+        } else {
+            Const_Data.getByKeyDateRange(keys, dateStr + " 00:00:00", dateStrEnd + " 00:00:00", function (err, rows) {
+                if (err) {
+                    return next(err);
+                }
+                res.json({'data': rows});
+            });
+        }
+
     }
 });
 

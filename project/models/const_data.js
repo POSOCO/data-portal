@@ -37,6 +37,27 @@ exports.getByKeyDate = function (key_str_array, dateStr, done) {
     });
 };
 
+exports.getByKeyDateRange = function (key_str_array, dateStr, dateStrEnd, done) {
+    var sql = squel.select()
+        .from(tableName);
+    var q = squel.expr();
+    var values = [];
+    q.and("time BETWEEN ? AND ?", dateStr, dateStrEnd);
+    var q2 = squel.expr();
+    if (key_str_array != null && key_str_array.constructor === Array) {//qualifies if key_str != "" and key_str!=null
+        for (var i = 0; i < key_str_array.length; i++) {
+            q2.or("key_string = ?", key_str_array[i]);
+        }
+        q.and(q2);
+    }
+    sql.where(q, {dontQuote: true});
+    //console.log("sql for Approval getByName is " + JSON.stringify(sql.toParam()));
+    db.get().query(sql.toParam().text, sql.toParam().values, function (err, rows) {
+        if (err) return done(err);
+        done(null, rows);
+    });
+};
+
 exports.getByKey = function (key_str, done) {
     var sql = squel.select()
         .from(tableName);

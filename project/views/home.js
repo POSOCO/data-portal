@@ -67,7 +67,7 @@ function fillFormField(id, val) {
 
 function fillKeysFromServer(dateStr) {
     var elems = document.getElementsByClassName("const-data-input");
-    var payLoad = {keys: [], dateStr: dateStr};
+    var payLoad = {keys: [], dateStr: dateStr, toDateStr: ""};
     for (var i = 0; i < elems.length; i++) {
         if (elems[i].id != "time") {
             elems[i].value = "";
