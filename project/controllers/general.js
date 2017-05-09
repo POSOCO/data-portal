@@ -81,7 +81,7 @@ router.get('/reports', function (req, res) {
                     });
                 }
             }
-            if (req.user.username == 'cpcc') {
+            if (req.user.username == 'cpccv') {
                 return res.render('cpccv-report-view', {user: req.user, genList: genList});
             }
             res.render('report-view', {user: req.user, genList: genList});

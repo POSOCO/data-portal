@@ -66,13 +66,13 @@
                                            name="time"
                                            type="text" required/>
                                 </div>
-                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4"><button class="btn btn-primary" onclick="exportTableAsCsv()">Export To CSV</button></div>
                             </div>
                             <br><br>
 
                             <div class="row">
                                 <div class="col-md-10">
-                                    <table class="table table-bordered table-hover">
+                                    <table id="toExportTable" class="table table-bordered table-hover">
                                         <tr>
                                             <td class="col-md-3">Line Name</td>
                                             <td class="col-md-2">Import MW</td>
@@ -82,19 +82,22 @@
                                         </tr>
                                         <% var line_names_ = ["VHVDC", "B'WATI HVDC", "765kV Solapur-Raichur# I", "765kV Solapur-Raichur# II", "400kV Narender-Kolhapur(GIS)-1", "400kV Narender-Kolhapur(GIS)-2", "R'kela #  1(Raigarh-Sundargarh#1", "R'kela #  1(Raigarh-Sundargarh#2", "Rourkela # 2 (SEL- 1)", "R'kela #  4 (SEL-2)", "B'padar #  1,2&3", "Ranchi-Sipat #I&II", "765kv Ranchi-Dharamjaygarh # 1", "765kv Ranchi-Dharamjaygarh # 2", "765kv Dharamjaygarh- Jharsuguda # 1", "765kv Dharamjaygarh- Jharsuguda # 2", "765kV Agra- Gwalior #1&2", "400kV Zerda - Kankroli", "400kV Zerda - Bhinmal", "Vindhyachal - Rihand", "765kV Gwalior-Jaipur #1&2", "400kV RAPP - Shujalpur # 1", "400kV RAPP - Shujalpur # 2", "Champa-Kurukshetra Bipole", "765kV Wardha-Nizamabad-1", "765kV Wardha-Nizamabad-2"]; %>
                                         <% for(var i = 0;i < line_names_.length;i++){ %>
-
-                                        <% } %>
-                                        <% if (typeof genList != 'undefined') { %>
-                                        <% for(var i = 0; i < genList.length; i++) { %>
                                         <tr>
-                                            <td class="col-md-4">
-                                                <span><strong><%= genList[i].str %></strong><%= " (" + genList[i].key + ")" %></span>
+                                            <td class="col-md-3"><strong><%= line_names_[i] %></strong>
                                             </td>
-                                            <td class="col-md-4"><span class="const-data-input"
-                                                                       id="<%= genList[i].key %>"></span>
-                                            </td>
+                                            <td class="col-md-2"><span class="const-data-input"
+                                                                       id="<%= line_names_[i] %>_IMPMW"
+                                                                       name="<%= line_names_[i] %>_IMPMW"></span></td>
+                                            <td class="col-md-2"><span class="const-data-input"
+                                                                       id="<%= line_names_[i] %>_EXPMW"
+                                                                       name="<%= line_names_[i] %>_EXPMW"></span></td>
+                                            <td class="col-md-2"><span class="const-data-input"
+                                                                       id="<%= line_names_[i] %>_IMPMU"
+                                                                       name="<%= line_names_[i] %>_IMPMU"></span></td>
+                                            <td class="col-md-2"><span class="const-data-input"
+                                                                       id="<%= line_names_[i] %>_EXPMU"
+                                                                       name="<%= line_names_[i] %>_EXPMU"></span></td>
                                         </tr>
-                                        <% } %>
                                         <% } %>
                                     </table>
                                 </div>

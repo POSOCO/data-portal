@@ -66,12 +66,12 @@
                                            name="time"
                                            type="text" required/>
                                 </div>
-                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4"><button class="btn btn-primary" onclick="exportTableAsCsv()">Export To CSV</button></div>
                             </div>
                             <br><br>
                             <div class="row">
                                 <div class="col-md-10">
-                                    <table class="table table-bordered table-hover">
+                                    <table id="toExportTable" class="table table-bordered table-hover">
                                         <% if (typeof genList != 'undefined') { %>
                                         <% for(var i = 0; i < genList.length; i++) { %>
                                         <tr>
