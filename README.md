@@ -16,3 +16,4 @@ Demo Video youtube link https://youtu.be/tqX6KOYXNvc
 5. Add login and profile links in the side bar -- done
 6. Use partials -- done
 7. Load the data if present for a date -- done
+8. In templates like cpccv data input template create input fields and labels that we missed in the template

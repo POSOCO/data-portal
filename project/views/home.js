@@ -61,7 +61,12 @@ function fillFormField(id, val) {
     }
     var elem = document.getElementById(id);
     if (elem != null && elem.classList.contains("const-data-input")) {
-        elem.value = val;
+        if (elem.tagName.toLowerCase() == 'input') {
+            elem.value = val;
+        } else {
+            elem.innerHTML = "" + val;
+        }
+
     }
 }
 

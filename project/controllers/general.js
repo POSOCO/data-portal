@@ -38,9 +38,6 @@ router.get('/signupemailsent', function (req, res) {
 router.get('/home', function (req, res) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
     if ((typeof req.user != 'undefined') && (req.user != null)) {
-        if(req.user.username == 'cpccv'){
-            return res.render('cpccv-input', {user: req.user});
-        }
         KeyData.getByUser(req.user.id, function (err, keyData) {
             if (err) {
                 return next(err);
@@ -56,11 +53,42 @@ router.get('/home', function (req, res) {
                     });
                 }
             }
+            if (req.user.username == 'cpccv') {
+                return res.render('cpccv-input', {user: req.user, genList: genList});
+            }
             res.render('home-gen', {user: req.user, genList: genList});
         });
     }
     else {
         res.render('home', {user: req.user});
+    }
+});
+
+router.get('/reports', function (req, res) {
+    //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
+    if ((typeof req.user != 'undefined') && (req.user != null)) {
+        KeyData.getByUser(req.user.id, function (err, keyData) {
+            if (err) {
+                return next(err);
+            }
+            var genList = [];
+            if (keyData != null && keyData.constructor === Array && keyData.length > 0) {
+                for (var i = 0; i < keyData.length; i++) {
+                    genList.push({
+                        key: keyData[i]["key_str"],
+                        str: keyData[i]["description"],
+                        type: keyData[i]["type_info"]
+                    });
+                }
+            }
+            if (req.user.username == 'cpcc') {
+                return res.render('cpccv-report-view', {user: req.user, genList: genList});
+            }
+            res.render('report-view', {user: req.user, genList: genList});
+        });
+    }
+    else {
+        res.render('report-view', {user: req.user, genList: []});
     }
 });
 
