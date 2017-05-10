@@ -75,7 +75,11 @@ function fillKeysFromServer(dateStr) {
     var payLoad = {keys: [], dateStr: dateStr, toDateStr: ""};
     for (var i = 0; i < elems.length; i++) {
         if (elems[i].id != "time") {
-            elems[i].value = "";
+            if (elems[i].tagName.toLowerCase() == 'input') {
+                elems[i].value = "";
+            } else {
+                elems[i].innerHTML = "";
+            }
             payLoad.keys.push(elems[i].id);
         }
     }
@@ -106,16 +110,16 @@ function exportTableAsCsv() {
     for (var i = 0; i < elem.rows.length; i++) {
         var rowElem = elem.rows[i];
         var row = [];
-        for(var k = 0; k < rowElem.cells.length; k++){
+        for (var k = 0; k < rowElem.cells.length; k++) {
             row.push(rowElem.cells[k].textContent.trim());
         }
         data.push(row);
     }
     var csvContent = "data:text/csv;charset=utf-8,";
-    data.forEach(function(infoArray, index){
+    data.forEach(function (infoArray, index) {
 
         var dataString = infoArray.join(",");
-        csvContent += index < data.length ? dataString+ "\n" : dataString;
+        csvContent += index < data.length ? dataString + "\n" : dataString;
     });
     var encodedUri = encodeURI(csvContent);
     var link = document.createElement("a");

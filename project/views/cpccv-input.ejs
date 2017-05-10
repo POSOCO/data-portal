@@ -84,9 +84,14 @@
                                         </div>
                                     </div>
                                     <% var line_names_ = ["VHVDC", "B'WATI HVDC", "765kV Solapur-Raichur# I", "765kV Solapur-Raichur# II", "400kV Narender-Kolhapur(GIS)-1", "400kV Narender-Kolhapur(GIS)-2", "R'kela #  1(Raigarh-Sundargarh#1", "R'kela #  1(Raigarh-Sundargarh#2", "Rourkela # 2 (SEL- 1)", "R'kela #  4 (SEL-2)", "B'padar #  1,2&3", "Ranchi-Sipat #I&II", "765kv Ranchi-Dharamjaygarh # 1", "765kv Ranchi-Dharamjaygarh # 2", "765kv Dharamjaygarh- Jharsuguda # 1", "765kv Dharamjaygarh- Jharsuguda # 2", "765kV Agra- Gwalior #1&2", "400kV Zerda - Kankroli", "400kV Zerda - Bhinmal", "Vindhyachal - Rihand", "765kV Gwalior-Jaipur #1&2", "400kV RAPP - Shujalpur # 1", "400kV RAPP - Shujalpur # 2", "Champa-Kurukshetra Bipole", "765kV Wardha-Nizamabad-1", "765kV Wardha-Nizamabad-2"]; %>
+                                    <% var templateUsedKeys_ = ["time"]; %>
                                     <% for(var i = 0;i < line_names_.length;i++){ %>
+                                    <% templateUsedKeys_.push(line_names_[i] + "_IMPMW"); %>
+                                    <% templateUsedKeys_.push(line_names_[i] + "_EXPMW"); %>
+                                    <% templateUsedKeys_.push(line_names_[i] + "_IMPMU"); %>
+                                    <% templateUsedKeys_.push(line_names_[i] + "_EXPMU"); %>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-3"><%= line_names_[i] %>
+                                        <label class="control-label col-lg-3"><strong><%= line_names_[i] %></strong>
                                             <span class="required">*</span></label>
 
                                         <div class="col-lg-2">
@@ -113,8 +118,31 @@
                                                    name="<%= line_names_[i] %>_EXPMU" type="number" step=.001
                                                    required>
                                         </div>
-                                        <div class="col-lg-2"></div>
+                                        <div class="col-lg-1"></div>
                                     </div>
+                                    <% } %>
+                                    <!-- Show the leftover keys other than the saved template keys -->
+                                    <% if (typeof genList != 'undefined') { %>
+                                    <!-- Mark all the template used keys from genlist and show the rest of the keys in the usual way -->
+                                    <% for(var i = 0;i < genList.length;i++){ %>
+                                    <% if(templateUsedKeys_.indexOf(genList[i].key) == -1){ %>
+                                    <div class="form-group ">
+                                        <label class="control-label col-lg-3"><strong><%= genList[i].str %></strong> <span
+                                                    class="required">*</span></label>
+
+                                        <div class="col-lg-8">
+                                            <input class="form-control const-data-input" id="<%= genList[i].key %>"
+                                                   name="<%= genList[i].key %>"
+                                                   type="<%= genList[i].type %>" required
+                                                    <% if(genList[i].type == "number"){ %>
+                                                    <%= "step=.001" %>
+                                                    <% } %>
+                                                    />
+                                        </div>
+                                        <div class="col-lg-1"></div>
+                                    </div>
+                                    <% } %>
+                                    <% } %>
                                     <% } %>
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
