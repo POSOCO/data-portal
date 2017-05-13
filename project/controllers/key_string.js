@@ -12,7 +12,6 @@ router.get('/', function (req, res, next) {
     });
 });
 
-
 router.post('/', function (req, res, next) {
     if (req.user.username != "admin") {
         return next(new Error("user is not admin"));

@@ -29,6 +29,20 @@ exports.getByUser = function (user_id, done) {
     });
 };
 
+exports.getByKeys = function (keys, done) {
+    var sql = squel.select()
+        .from(tableName);
+    if (keys != null) {//qualifies if keys != "" and keys!=null
+        sql.where("key_str IN ?", keys);
+    }
+    //console.log("sql for Approval getByName is " + sql.toString());
+    //console.log("sql for Approval getByName is " + JSON.stringify(sql.toParam()));
+    db.get().query(sql.toParam().text, sql.toParam().values, function (err, rows) {
+        if (err) return done(err);
+        done(null, rows);
+    });
+};
+
 exports.create = function (key_str, key_info, key_desc, user_id, done) {
     var insertColumns = tableColumns;
     var values = [key_str, key_info, key_desc, user_id];

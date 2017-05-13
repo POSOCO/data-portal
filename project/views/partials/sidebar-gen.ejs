@@ -28,10 +28,11 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="./contact">Contact Us</a></li>
                     <% if (user != null && user.username == 'admin') { %>
+                    <li><a class="" href="./reports?name=coal_shortage">Coal Shortage Report</a></li>
                     <li><a class="" href="./key-manager">Key Manager</a></li>
                     <% } %>
+                    <li><a class="" href="./contact">Contact Us</a></li>
                 </ul>
             </li>
             <li class="sub-menu ">

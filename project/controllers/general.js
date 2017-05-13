@@ -4,6 +4,7 @@ var Email_Token = require('../models/email_token.js');
 var Password_token = require('../models/password_change_request.js');
 var User = require('../models/User_Mysql');
 var KeyData = require('../models/key_string');
+var KeyConfig = require('../config/key_config');
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
@@ -35,10 +36,14 @@ router.get('/signupemailsent', function (req, res) {
     res.render('signupemailsent');
 });
 
-router.get('/home', function (req, res) {
+router.get('/home', function (req, res, next) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
     if ((typeof req.user != 'undefined') && (req.user != null)) {
-        KeyData.getByUser(req.user.id, function (err, keyData) {
+        var userId = req.user.id;
+        if (req.user.username == 'admin') {
+            userId = null;
+        }
+        KeyData.getByUser(userId, function (err, keyData) {
             if (err) {
                 return next(err);
             }
@@ -64,10 +69,37 @@ router.get('/home', function (req, res) {
     }
 });
 
-router.get('/reports', function (req, res) {
+router.get('/reports', function (req, res, next) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
+    var reportName = req.query.name;
+    var userId = null;
     if ((typeof req.user != 'undefined') && (req.user != null)) {
-        KeyData.getByUser(req.user.id, function (err, keyData) {
+        if (req.user.username == 'admin' && reportName == 'coal_shortage') {
+            var keys = KeyConfig.coal_shortage_keys.keys;
+            KeyData.getByKeys(keys, function (err, keyData) {
+                if (err) {
+                    console.log(err);
+                    return next(err);
+                }
+                var genList = [];
+                if (keyData != null && keyData.constructor === Array && keyData.length > 0) {
+                    for (var i = 0; i < keyData.length; i++) {
+                        genList.push({
+                            key: keyData[i]["key_str"],
+                            str: keyData[i]["description"],
+                            type: keyData[i]["type_info"]
+                        });
+                    }
+                }
+                return res.render('report-view', {user: req.user, genList: genList});
+            });
+            return;
+        }
+
+        if (req.user.username != "admin") {
+            userId = req.user.id;
+        }
+        KeyData.getByUser(userId, function (err, keyData) {
             if (err) {
                 return next(err);
             }
@@ -92,10 +124,10 @@ router.get('/reports', function (req, res) {
     }
 });
 
-router.get('/trends', function (req, res) {
+router.get('/trends', function (req, res, next) {
     //console.log((typeof req.user == 'undefined') ? "undefined" : req.user.username);
     var userId = null;
-    if ((typeof req.user != 'undefined') && (req.user != null)) {
+    if ((typeof req.user != 'undefined') && (req.user != null) && (req.user.username != 'admin')) {
         userId = req.user.id;
     }
     KeyData.getByUser(userId, function (err, keyData) {
@@ -126,7 +158,7 @@ router.get('/state-data', function (req, res) {
     res.render('state-data', {user: req.user});
 });
 
-router.get('/key-manager', function (req, res) {
+router.get('/key-manager', function (req, res, next) {
     if ((typeof req.user != 'undefined') && (req.user != null) && (req.user.username == 'admin')) {
         User.getAll(function (err, consts) {
             if (err) {

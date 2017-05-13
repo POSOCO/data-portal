@@ -1,0 +1,5 @@
+var keysObj = {};
+keysObj.coal_shortage_keys = {
+    keys: ["nspcl_coal_shortage_gen_loss_mw", "cgpl_coal_shortage_gen_loss_mw", "sugen_coal_shortage_gen_loss_mw", "gpec_coal_shortage_gen_loss_mw", "ugpp_coal_shortage_gen_loss_mw", "dgbp_coal_shortage_gen_loss_mw", "gipcl_coal_shortage_gen_loss_mw", "bhusawal_coal_shortage_gen_loss_mw", "chandrapur_coal_shortage_gen_loss_mw", "khaparkheda_coal_shortage_gen_loss_mw", "koradi_coal_shortage_gen_loss_mw", "parli_coal_shortage_gen_loss_mw", "paras_coal_shortage_gen_loss_mw", "jpl_1_coal_shortage_gen_loss_mw", "jpl_2_coal_shortage_gen_loss_mw", "trombay_coal_shortage_gen_loss_mw", "kasipali_coal_shortage_gen_loss_mw", "ratija_coal_shortage_gen_loss_mw", "chakabura_coal_shortage_gen_loss_mw", "bandakhar_coal_shortage_gen_loss_mw"]
+};
+module.exports = keysObj;
