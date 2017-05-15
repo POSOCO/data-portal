@@ -21,6 +21,7 @@ function loadConstKeys() {
         error: function (textStatus, errorThrown) {
             console.log(textStatus);
             console.log(errorThrown);
+            toastr["error"](textStatus.responseJSON.message);
         }
     });
 }
@@ -54,6 +55,7 @@ function saveConstKeys() {
         error: function (textStatus, errorThrown) {
             console.log(textStatus);
             console.log(errorThrown);
+            toastr["error"](textStatus.responseJSON.message);
         }
     });
 }

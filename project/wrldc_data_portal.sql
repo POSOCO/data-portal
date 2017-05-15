@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2017 at 02:59 PM
+-- Generation Time: May 15, 2017 at 10:05 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `const_data` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `time` (`time`,`key_string`)
-) ENGINE=InnoDB AUTO_INCREMENT=354 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=358 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `const_data`
@@ -256,7 +256,11 @@ INSERT INTO `const_data` (`id`, `time`, `key_string`, `value_string`, `created_a
   (350, '2017-04-17 00:00:00', 'Ranchi-Sipat #I&II_EXPMU', '-7.403', '2017-04-18 10:42:26', '2017-04-18 10:42:26'),
   (351, '2017-04-17 00:00:00', 'Ranchi-Sipat #I&II_EXPMW', '-452', '2017-04-18 10:42:26', '2017-04-18 10:42:26'),
   (352, '2017-04-17 00:00:00', 'VHVDC_IMPMU', '8.569', '2017-04-18 10:42:26', '2017-04-18 10:42:26'),
-  (353, '2017-04-17 00:00:00', 'VHVDC_IMPMW', '350', '2017-04-18 10:42:26', '2017-04-18 10:42:26');
+  (353, '2017-04-17 00:00:00', 'VHVDC_IMPMW', '350', '2017-04-18 10:42:26', '2017-04-18 10:42:26'),
+  (354, '2017-05-12 00:00:00', 'nspcl_coal_shortage_gen_loss_mw', '123', '2017-05-13 11:03:06', '2017-05-13 11:03:06'),
+  (355, '2017-05-12 00:00:00', 'nspcl_tot_mu', '456', '2017-05-13 11:03:06', '2017-05-13 11:03:06'),
+  (356, '2017-05-11 00:00:00', 'nspcl_coal_shortage_gen_loss_mw', '426', '2017-05-13 11:03:18', '2017-05-13 11:03:18'),
+  (357, '2017-05-11 00:00:00', 'nspcl_tot_mu', '258', '2017-05-13 11:03:18', '2017-05-13 11:03:18');
 
 -- --------------------------------------------------------
 
@@ -362,19 +366,24 @@ INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `c
   ('BADOD-SAKATPUR_IMPMU', 55, 'number', 'BADOD-SAKATPUR_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
   ('BADOD-SAKATPUR_IMPMW', 55, 'number', 'BADOD-SAKATPUR_IMPMW', '2017-04-16 18:59:30', '2017-04-16 18:59:30'),
   ('balco_tot_mu', 50, 'number', 'BALCO Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
+  ('bandakhar_coal_shortage_gen_loss_mw', 68, 'number', 'Bandakhar Coal Shortage Generation loss MW', '2017-05-13 00:19:16', '2017-05-13 00:19:16'),
   ('BHANPURA-MODAK_EXPMU', 55, 'number', 'BHANPURA-MODAK_EXPMU', '2017-04-16 19:09:40', '2017-04-16 19:09:40'),
   ('BHANPURA-MODAK_EXPMW', 55, 'number', 'BHANPURA-MODAK_EXPMW', '2017-04-16 19:08:05', '2017-04-16 19:08:05'),
   ('BHANPURA-MODAK_IMPMU', 55, 'number', 'BHANPURA-MODAK_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
   ('BHANPURA-MODAK_IMPMW', 55, 'number', 'BHANPURA-MODAK_IMPMW', '2017-04-16 18:59:30', '2017-04-16 18:59:30'),
+  ('bhusawal_coal_shortage_gen_loss_mw', 54, 'number', 'Bhusawal Coal Shortage Generation loss MW', '2017-05-13 00:11:21', '2017-05-13 00:11:21'),
   ('BUDHIPADR-KORBA_EXPMU', 53, 'number', 'BUDHIPADR-KORBA_EXPMU', '2017-04-16 19:09:40', '2017-04-16 19:09:40'),
   ('BUDHIPADR-KORBA_EXPMW', 53, 'number', 'BUDHIPADR-KORBA_EXPMW', '2017-04-16 19:08:05', '2017-04-16 19:08:05'),
   ('BUDHIPADR-KORBA_IMPMU', 53, 'number', 'BUDHIPADR-KORBA_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
   ('BUDHIPADR-KORBA_IMPMW', 53, 'number', 'BUDHIPADR-KORBA_IMPMW', '2017-04-16 18:59:30', '2017-04-16 18:59:30'),
+  ('cgpl_coal_shortage_gen_loss_mw', 36, 'number', 'CGPL Generation Loss MU', '2017-05-12 22:39:12', '2017-05-13 08:06:35'),
   ('cgpl_tot_mu', 36, 'number', 'CGPL Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
+  ('chakabura_coal_shortage_gen_loss_mw', 68, 'number', 'Chakabura Coal Shortage Generation loss MW', '2017-05-13 00:19:16', '2017-05-13 00:19:16'),
   ('Champa-Kurukshetra Bipole_EXPMU', 61, 'number', 'Champa-Kurukshetra Bipole_EXPMU', '2017-04-16 19:09:40', '2017-04-16 19:09:40'),
   ('Champa-Kurukshetra Bipole_EXPMW', 61, 'number', 'Champa-Kurukshetra Bipole_EXPMW', '2017-04-16 19:08:05', '2017-04-16 19:08:05'),
   ('Champa-Kurukshetra Bipole_IMPMU', 61, 'number', 'Champa-Kurukshetra Bipole_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
   ('Champa-Kurukshetra Bipole_IMPMW', 61, 'number', 'Champa-Kurukshetra Bipole_IMPMW', '2017-04-16 18:59:30', '2017-04-16 18:59:30'),
+  ('chandrapur_coal_shortage_gen_loss_mw', 54, 'number', 'Chandrapur Coal Shortage Generation loss MW', '2017-05-13 00:11:21', '2017-05-13 00:11:21'),
   ('dem19hrs_CSEB', 53, 'number', 'Chattisgarh Demand at 19 Hrs in MW', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('dem19hrs_DD', 57, 'number', 'DD Demand at 19 Hrs in MW', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('dem19hrs_DNH', 58, 'number', 'DNH Demand at 19 Hrs in MW', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
@@ -399,6 +408,7 @@ INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `c
   ('dem3hrs_GOA', 59, 'number', 'GOA Demand at 3 Hrs in MW', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('dem3hrs_MP', 55, 'number', 'MP Demand at 3 Hrs in MW', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('dem3hrs_MSEB', 54, 'number', 'Maharashtra Demand at 3 Hrs in MW', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
+  ('dgbp_coal_shortage_gen_loss_mw', 56, 'number', 'DGBP Coal Shortage Generation Loss MW', '2017-05-13 00:07:19', '2017-05-13 00:07:19'),
   ('dgen_tot_mu', 47, 'number', 'DGEN Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
   ('drawal_CSEB', 53, 'number', 'Chattisgarh Drawal MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('drawal_DD', 57, 'number', 'DD Drawal MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
@@ -410,6 +420,8 @@ INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `c
   ('drawal_MSEB', 54, 'number', 'Maharashtra Drawal MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('essarmahan_tot_mu', 51, 'number', 'ESSARMAHAN Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
   ('gandhar_tot_mu', 32, 'number', 'Gandhar Generation MU', '2017-04-05 00:12:43', '2017-04-05 00:12:43'),
+  ('gipcl_coal_shortage_gen_loss_mw', 56, 'number', 'GIPCL Coal Shortage Generation Loss MW', '2017-05-13 00:07:19', '2017-05-13 00:07:19'),
+  ('gpec_coal_shortage_gen_loss_mw', 56, 'number', 'GPEC Coal Shortage Generation Loss MW', '2017-05-13 00:07:19', '2017-05-13 00:07:19'),
   ('hydroGen1_MP', 55, 'number', 'Indira Sagar Hydro Generation MU', '2017-04-11 12:19:31', '2017-04-11 12:19:31'),
   ('hydroGen2_MP', 55, 'number', 'Omkareshwar Hydro Generation MU', '2017-04-11 12:19:31', '2017-04-11 12:19:31'),
   ('hydroGen_CSEB', 53, 'number', 'Chattisgarh Hydro Generation MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
@@ -418,13 +430,18 @@ INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `c
   ('hydroGen_MSEB', 54, 'number', 'Maharashtra Hydro Generation MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('jhabua_tot_mu', 49, 'number', 'JHABUA Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
   ('jpltamnar_tot_mu', 46, 'number', 'JPLTAMNAR Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
+  ('jpl_1_coal_shortage_gen_loss_mw', 40, 'number', 'JPL I Coal Shortage Generation loss MW', '2017-05-13 00:13:31', '2017-05-13 00:13:31'),
+  ('jpl_2_coal_shortage_gen_loss_mw', 40, 'number', 'JPL II Coal Shortage Generation loss MW', '2017-05-13 00:13:31', '2017-05-13 00:13:31'),
   ('jpl_tot_mu', 40, 'number', 'JPL Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
   ('kaps_tot_mu', 34, 'number', 'KAPS Generation MU', '2017-04-05 00:14:36', '2017-04-05 00:14:36'),
+  ('kasipali_coal_shortage_gen_loss_mw', 68, 'number', 'Kasipali Coal Shortage Generation loss MW', '2017-05-13 00:19:16', '2017-05-13 00:19:16'),
   ('kawas_tot_mu', 32, 'number', 'Kawas Generation MU', '2017-04-05 00:12:43', '2017-04-05 00:12:43'),
+  ('khaparkheda_coal_shortage_gen_loss_mw', 54, 'number', 'Khaparkheda Coal Shortage Generation loss MW', '2017-05-13 00:11:21', '2017-05-13 00:11:21'),
   ('KOLHAPUR-CHIKODI_EXPMU', 54, 'number', 'KOLHAPUR-CHIKODI_EXPMU', '2017-04-16 19:09:40', '2017-04-16 19:09:40'),
   ('KOLHAPUR-CHIKODI_EXPMW', 54, 'number', 'KOLHAPUR-CHIKODI_EXPMW', '2017-04-16 19:08:05', '2017-04-16 19:08:05'),
   ('KOLHAPUR-CHIKODI_IMPMU', 54, 'number', 'KOLHAPUR-CHIKODI_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
   ('KOLHAPUR-CHIKODI_IMPMW', 54, 'number', 'KOLHAPUR-CHIKODI_IMPMW', '2017-04-16 18:59:30', '2017-04-16 18:59:30'),
+  ('koradi_coal_shortage_gen_loss_mw', 54, 'number', 'Koradi Coal Shortage Generation loss MW', '2017-05-13 00:11:21', '2017-05-13 00:11:21'),
   ('ksk_tot_mu', 41, 'number', 'KSK Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
   ('kstps_tot_mu', 32, 'number', 'KSTPS Generation MU', '2017-04-04 23:54:44', '2017-04-04 23:55:43'),
   ('lanco_tot_mu', 39, 'number', 'LANCO Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
@@ -470,7 +487,10 @@ INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `c
   ('MEHGAON-AURAIYA_IMPMU', 55, 'number', 'MEHGAON-AURAIYA_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
   ('MEHGAON-AURAIYA_IMPMW', 55, 'number', 'MEHGAON-AURAIYA_IMPMW', '2017-04-16 18:59:30', '2017-04-16 18:59:30'),
   ('mouda_tot_mu', 32, 'number', 'Mouda Generation MU', '2017-04-05 00:12:43', '2017-04-05 00:12:43'),
+  ('nspcl_coal_shortage_gen_loss_mw', 38, 'number', 'NSPCL Generation Loss MW', '2017-05-13 08:08:15', '2017-05-13 08:08:15'),
   ('nspcl_tot_mu', 38, 'number', 'NSPCL Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
+  ('paras_coal_shortage_gen_loss_mw', 54, 'number', 'Paras Coal Shortage Generation loss MW', '2017-05-13 00:11:21', '2017-05-13 00:11:21'),
+  ('parli_coal_shortage_gen_loss_mw', 54, 'number', 'Parli Coal Shortage Generation loss MW', '2017-05-13 00:11:21', '2017-05-13 00:11:21'),
   ('R''kela #  1(Raigarh-Sundargarh#1_EXPMU', 61, 'number', 'R''kela #  1(Raigarh-Sundargarh#1_EXPMU', '2017-04-16 19:09:40', '2017-04-16 19:09:40'),
   ('R''kela #  1(Raigarh-Sundargarh#1_EXPMW', 61, 'number', 'R''kela #  1(Raigarh-Sundargarh#1_EXPMW', '2017-04-16 19:08:05', '2017-04-16 19:08:05'),
   ('R''kela #  1(Raigarh-Sundargarh#1_IMPMU', 61, 'number', 'R''kela #  1(Raigarh-Sundargarh#1_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
@@ -491,6 +511,7 @@ INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `c
   ('Ranchi-Sipat #I&II_EXPMW', 61, 'number', 'Ranchi-Sipat #I&II_EXPMW', '2017-04-16 19:08:05', '2017-04-16 19:08:05'),
   ('Ranchi-Sipat #I&II_IMPMU', 61, 'number', 'Ranchi-Sipat #I&II_IMPMU', '2017-04-16 19:08:47', '2017-04-16 19:08:47'),
   ('Ranchi-Sipat #I&II_IMPMW', 61, 'number', 'Ranchi-Sipat #I&II_IMPMW', '2017-04-16 18:59:30', '2017-04-16 18:59:30'),
+  ('ratija_coal_shortage_gen_loss_mw', 68, 'number', 'Ratija Coal Shortage Generation loss MW', '2017-05-13 00:19:16', '2017-05-13 00:19:16'),
   ('requirement_GEB', 56, 'number', 'Gujarat Requirement MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('rgppl_tot_mu', 48, 'number', 'RGPPL Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
   ('rkm_tot_mu', 42, 'number', 'RKM Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
@@ -511,8 +532,11 @@ INSERT INTO `key_strings` (`key_str`, `users_id`, `type_info`, `description`, `c
   ('solarGen_MSEB', 54, 'number', 'Maharashtra Solar Generation MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
   ('ssp_tot_mu', 33, 'number', 'SSP Generation MU', '2017-04-05 00:14:36', '2017-04-05 00:14:36'),
   ('stateGen_GOA', 59, 'number', 'GOA State Generation MU', '2017-04-06 14:43:14', '2017-04-06 14:43:14'),
+  ('sugen_coal_shortage_gen_loss_mw', 56, 'number', 'Sugen Coal Shortage Generation Loss MW', '2017-05-13 00:07:19', '2017-05-13 00:07:19'),
   ('taps_tot_mu', 35, 'number', 'TAPS Generation MU', '2017-04-05 00:19:26', '2017-04-05 00:19:26'),
   ('trn_tot_mu', 43, 'number', 'TRN Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
+  ('trombay_coal_shortage_gen_loss_mw', 67, 'number', 'Trombay Coal Shortage Generation loss MW', '2017-05-13 00:20:15', '2017-05-13 00:20:15'),
+  ('ugpp_coal_shortage_gen_loss_mw', 56, 'number', 'UGPP Coal Shortage Generation Loss MW', '2017-05-13 00:07:19', '2017-05-13 00:07:19'),
   ('vandana_tot_mu', 52, 'number', 'VANDANA Total Generation MU', '2017-04-05 13:38:09', '2017-04-05 13:38:09'),
   ('VHVDC_EXPMU', 61, 'number', 'VHVDC_EXPMU', '2017-04-16 19:09:40', '2017-04-16 19:09:40'),
   ('VHVDC_EXPMW', 61, 'number', 'VHVDC_EXPMW', '2017-04-16 19:08:05', '2017-04-16 19:08:05'),
@@ -575,7 +599,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `emailid` (`emailid`),
   KEY `role_id` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -614,7 +638,10 @@ INSERT INTO `users` (`id`, `username`, `emailid`, `password`, `role_id`, `create
   (59, 'goa', 'goa@gmail.com', 'goa', 1, '2017-04-05 15:44:02', '2017-04-05 15:44:02', 0),
   (60, 'esil', 'esil@gmail.com', 'esil', 1, '2017-04-05 15:44:02', '2017-04-05 15:44:02', 0),
   (61, 'cpccv', 'cppcv@gmail.com', 'cpccv', 1, '2017-04-16 12:55:11', '2017-04-16 12:55:11', 0),
-  (62, 'cpccn', 'cppcn@gmail.com', 'cpccn', 1, '2017-04-16 12:55:11', '2017-04-16 12:55:11', 0);
+  (62, 'cpccn', 'cppcn@gmail.com', 'cpccn', 1, '2017-04-16 12:55:11', '2017-04-16 12:55:11', 0),
+  (67, 'tata', 'tata@gmail', 'tata', 1, '2017-05-12 18:46:24', '2017-05-12 18:46:24', 0),
+  (68, 'acbil', 'acbil@gmail', 'acbil', 1, '2017-05-12 18:46:24', '2017-05-12 18:46:24', 0),
+  (69, 'key_manager', 'key_manager@gmail.com', 'key_manager', 2, '2017-05-15 09:55:11', '2017-05-15 09:55:11', 0);
 
 --
 -- Constraints for dumped tables

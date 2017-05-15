@@ -13,8 +13,8 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    if (req.user.username != "admin") {
-        return next(new Error("user is not admin"));
+    if (req.user.username != "key_manager") {
+        return next(new Error("user is not key_manager"));
     }
     var key_str = req.body["key_str"];
     var key_info = req.body["key_info"];
@@ -31,8 +31,8 @@ router.post('/', function (req, res, next) {
 });
 
 router.post('/create', function (req, res, next) {
-    if (req.user.username != "admin") {
-        return next(new Error("user is not admin"));
+    if (req.user.username != "key_manager") {
+        return next(new Error("user is not key_manager"));
     }
     var key_str = req.body["key_str[]"];
     var key_info = req.body["key_info[]"];
@@ -60,8 +60,8 @@ router.post('/create', function (req, res, next) {
 });
 
 router.put('/', function (req, res, next) {
-    if (req.user.username != "admin") {
-        return next(new Error("user is not admin"));
+    if (req.user.username != "key_manager") {
+        return next(new Error("user is not key_manager"));
     }
     var key_str = req.body["key_str"];
     var key_info = req.body["key_info"];
@@ -78,8 +78,8 @@ router.put('/', function (req, res, next) {
 });
 
 router.delete('/', function (req, res, next) {
-    if (req.user.username != "admin") {
-        return next(new Error("user is admin"));
+    if (req.user.username != "key_manager") {
+        return next(new Error("user is key_manager"));
     }
     var id = req.body["id"];
     KeyString.delete(id, function (err, result) {

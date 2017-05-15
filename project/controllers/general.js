@@ -159,7 +159,7 @@ router.get('/state-data', function (req, res) {
 });
 
 router.get('/key-manager', function (req, res, next) {
-    if ((typeof req.user != 'undefined') && (req.user != null) && (req.user.username == 'admin')) {
+    if ((typeof req.user != 'undefined') && (req.user != null) && (req.user.username == 'admin' || req.user.username == 'key_manager')) {
         User.getAll(function (err, consts) {
             if (err) {
                 return next(err);

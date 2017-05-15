@@ -28,7 +28,7 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <% if (user != null && user.username == 'admin') { %>
+                    <% if (user != null && (user.username == 'admin' || user.username == 'key_manager')) { %>
                     <li><a class="" href="./reports?name=coal_shortage">Coal Shortage Report</a></li>
                     <li><a class="" href="./key-manager">Key Manager</a></li>
                     <% } %>
