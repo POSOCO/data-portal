@@ -70,7 +70,8 @@
                                     <div class="form-group ">
                                         <label class="control-label col-lg-3"><strong>Line Name</strong>
                                         </label>
-
+                                        <label class="control-label col-lg-1"><strong>Link Name</strong>
+                                        </label>
                                         <label class="control-label col-lg-2"><strong>Import MW</strong>
                                         </label>
                                         <label class="control-label col-lg-2"><strong>Export MW</strong>
@@ -84,6 +85,7 @@
                                         </div>
                                     </div>
                                     <% var line_names_ = ["VHVDC", "B'WATI HVDC", "765kV Solapur-Raichur# I", "765kV Solapur-Raichur# II", "400kV Narender-Kolhapur(GIS)-1", "400kV Narender-Kolhapur(GIS)-2", "R'kela #  1(Raigarh-Sundargarh#1", "R'kela #  1(Raigarh-Sundargarh#2", "Rourkela # 2 (SEL- 1)", "R'kela #  4 (SEL-2)", "B'padar #  1,2&3", "Ranchi-Sipat #I&II", "765kv Ranchi-Dharamjaygarh # 1", "765kv Ranchi-Dharamjaygarh # 2", "765kv Dharamjaygarh- Jharsuguda # 1", "765kv Dharamjaygarh- Jharsuguda # 2", "765kV Agra- Gwalior #1&2", "400kV Zerda - Kankroli", "400kV Zerda - Bhinmal", "Vindhyachal - Rihand", "765kV Gwalior-Jaipur #1&2", "400kV RAPP - Shujalpur # 1", "400kV RAPP - Shujalpur # 2", "Champa-Kurukshetra Bipole", "765kV Wardha-Nizamabad-1", "765kV Wardha-Nizamabad-2"]; %>
+                                    <% var link_names_ = ['WR-NR', 'WR-SR', 'WR-SR', 'WR-SR', 'WR-SR', 'WR-SR', 'WR-ER', 'WR-ER', 'WR-ER', 'WR-ER', 'WR-ER', 'WR-ER', 'WR-ER', 'WR-ER', 'WR-ER', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-SR', 'WR-SR', 'WR-ER', 'WR-ER', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-NR', 'WR-SR', 'WR-SR', 'WR-NR']; %>
                                     <% var templateUsedKeys_ = ["time"]; %>
                                     <% for(var i = 0;i < line_names_.length;i++){ %>
                                     <% templateUsedKeys_.push(line_names_[i] + "_IMPMW"); %>
@@ -93,6 +95,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-lg-3"><strong><%= line_names_[i] %></strong>
                                             <span class="required">*</span></label>
+                                        <label class="control-label col-lg-1"><%= link_names_[i] %></label>
 
                                         <div class="col-lg-2">
                                             <input class="form-control const-data-input"
