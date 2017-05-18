@@ -129,3 +129,24 @@ function exportTableAsCsv() {
 
     link.click(); // This will download the data file named "my_data.csv".
 }
+
+function printTable() {
+    var divToPrint = document.getElementById("toExportTable");
+    var newWin = window.open("");
+    var htmlToPrint = '' +
+        '<style type="text/css">' +
+        'table {' +
+        'border-collapse: collapse;' +
+        '}' +
+        'table th, table td {' +
+        'border:1px solid #000;' +
+        'padding:0.5em;' +
+        '}' +
+        'table td {' +
+        'max-width:450px;' +
+        '}' +
+        '</style>';
+    htmlToPrint += divToPrint.outerHTML;
+    newWin.document.write(htmlToPrint);
+    newWin.print();
+}
