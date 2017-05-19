@@ -72,9 +72,16 @@
                                 </div>
                             </div>
                             <br><br>
+
                             <div class="row">
                                 <div class="col-md-10">
-                                    <table id="toExportTable" class="table table-bordered table-hover">
+                                    <h2 class="printableElement">
+                                        <% if(user != null && typeof user.username != 'undefined'){ %>
+                                        <%= user.username.toUpperCase() %>
+                                        <% } %>
+                                        Data for <span id="headingDatePlaceHolder"></span>
+                                    </h2>
+                                    <table id="toExportTable" class="table table-bordered table-hover printableElement">
                                         <% if (typeof genList != 'undefined') { %>
                                         <% for(var i = 0; i < genList.length; i++) { %>
                                         <tr>

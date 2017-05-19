@@ -90,6 +90,7 @@ function fillKeysFromServer(dateStr) {
         success: function (result) {
             toastr["info"]("Data received from server");
             console.log(result);
+            document.getElementById("headingDatePlaceHolder").innerHTML = dateStr;
             var dataArray = result.data;
             if (typeof dataArray != 'undefined' && dataArray != null && dataArray.constructor === Array) {
                 for (var i = 0; i < dataArray.length; i++) {
@@ -131,7 +132,7 @@ function exportTableAsCsv() {
 }
 
 function printTable() {
-    var divToPrint = document.getElementById("toExportTable");
+    var divsToPrint = document.getElementsByClassName("printableElement");
     var newWin = window.open("");
     var htmlToPrint = '' +
         '<style type="text/css">' +
@@ -146,7 +147,9 @@ function printTable() {
         'max-width:450px;' +
         '}' +
         '</style>';
-    htmlToPrint += divToPrint.outerHTML;
+    for (var i = 0; i < divsToPrint.length; i++) {
+        htmlToPrint += divsToPrint[i].outerHTML;
+    }
     newWin.document.write(htmlToPrint);
     newWin.print();
 }
