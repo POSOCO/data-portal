@@ -32,6 +32,7 @@
 </head>
 
 <body>
+<% include ./partials/scrollTopBottom.ejs %>
 <!-- container section start -->
 <section id="container" class="">
     <% include ./partials/header-gen.ejs %>
@@ -56,6 +57,13 @@
                         </header>
                         <div class="panel-body">
                             <% include ./partials/upload-button-partial.ejs %>
+                            <h2 class="printableElement">
+                                <% if(user != null && typeof user.username != 'undefined'){ %>
+                                <%= user.username.toUpperCase() %>
+                                <% } %>
+                                Data for <span id="headingDatePlaceHolder"></span>
+                            </h2>
+
                             <div class="form">
                                 <form class="form-validate form-horizontal" id="feedback_form" action="#">
                                     <% if (genList) { %>
