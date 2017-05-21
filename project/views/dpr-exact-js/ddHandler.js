@@ -1,4 +1,7 @@
 // use parseFloat("20.324 mw") to extract load staggering from the string. we can also use "foo3bar5".match(/\d+/)[0]
+// Demand specified is unrestricted demand. So the catered peak dem etc would be unrestricted - ls
+// Freq corr is not specified by dd
+
 var ddCsvAddresses = {
     allocation_MW_col_DD: convertExcelAddressToXY("B9"),
     demand_MW_col_DD: convertExcelAddressToXY("C9"),
@@ -28,10 +31,10 @@ function handleDD() {
     dem19hrs_DD = -1;
     dem20hrs_DD = -1;
     var ddDataArray = dprReader.filesAfterReadArrays[consIDs[1]][0];
-    drawal_DD = ddDataArray[ddCsvAddresses["drawal_MU_DD"]["row"]][ddCsvAddresses["drawal_MU_DD"]["col"]];
+    drawal_DD = getByAddressFromArray(ddDataArray, ddCsvAddresses["drawal_MU_DD"]);
     for (var hr = 1; hr <= 24; hr++) {
-        dem24Hrs_DD[hr - 1] = ddDataArray[ddCsvAddresses["demand_MW_col_DD"]["row"] + hr - 1][ddCsvAddresses["demand_MW_col_DD"]["col"]];
-        ls24Hrs_DD[hr - 1] = parseFloat(ddDataArray[ddCsvAddresses["ls_MW_col_DD"]["row"] + hr - 1][ddCsvAddresses["ls_MW_col_DD"]["col"]]);
+        ls24Hrs_DD[hr - 1] = parseFloat(getByAddressFromArray(ddDataArray, ddCsvAddresses["ls_MW_col_DD"], hr - 1));
+        dem24Hrs_DD[hr - 1] = getByAddressFromArray(ddDataArray, ddCsvAddresses["demand_MW_col_DD"], hr - 1) - ls24Hrs_DD[hr - 1];
     }
     maxDemTime_DD = indexOfMax(dem24Hrs_DD) + 1;
     maxDem_DD = dem24Hrs_DD[maxDemTime_DD - 1];
@@ -44,8 +47,8 @@ function handleDD() {
     lsMaxDem_DD = ls24Hrs_DD[maxDemTime_DD - 1];
     WriteLineConsole("*********** DD DATA ***********");
     WriteLineConsole("");
-    WriteLineConsole(dem19hrs_DD);
-    WriteLineConsole(ls19hrs_DD);
+    WriteLineConsole(dem24Hrs_DD[peakHrIndex]);
+    WriteLineConsole(ls24Hrs_DD[peakHrIndex]);
     WriteLineConsole("");
     WriteLineConsole(drawal_DD);
     WriteLineConsole("");

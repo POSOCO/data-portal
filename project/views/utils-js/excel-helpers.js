@@ -20,3 +20,13 @@ function convertExcelAddressToXY(str) {
     }
     return null;
 }
+
+function getByAddressFromArray(arr, addressObj, rowOff, colOff) {
+    if (rowOff == null) {
+        rowOff = 0;
+    }
+    if (colOff == null) {
+        colOff = 0;
+    }
+    return arr[addressObj["row"] + rowOff][addressObj["col"] + colOff];
+}

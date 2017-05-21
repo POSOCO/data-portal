@@ -1,3 +1,6 @@
+// Demand specified is unrestricted demand. So the catered peak dem etc would be unrestricted - ls
+// Freq corr is not specified by dnh
+
 var dnhCsvAddresses = {
     allocation_MW_col_DNH: convertExcelAddressToXY("B8"),
     demand_MW_col_DNH: convertExcelAddressToXY("C8"),
@@ -31,14 +34,14 @@ function handleDNH() {
     ls19hrs_DNH = -1;
     ls20hrs_DNH = -1;
     var dnhDataArray = dprReader.filesAfterReadArrays[consIDs[2]][0];
-    drawal_DNH = dnhDataArray[dnhCsvAddresses["drawal_MU_DNH"]["row"]][dnhCsvAddresses["drawal_MU_DNH"]["col"]];
+    drawal_DNH = getByAddressFromArray(dnhDataArray, dnhCsvAddresses["drawal_MU_DNH"]);
     for (var hr = 1; hr <= 24; hr++) {
-        dem24Hrs_DNH[hr - 1] = dnhDataArray[dnhCsvAddresses["demand_MW_col_DNH"]["row"] + hr - 1][dnhCsvAddresses["demand_MW_col_DNH"]["col"]];
-        var ls = dnhDataArray[dnhCsvAddresses["ls_MW_col_DNH"]["row"] + hr - 1][dnhCsvAddresses["ls_MW_col_DNH"]["col"]];
+        var ls = getByAddressFromArray(dnhDataArray, dnhCsvAddresses["ls_MW_col_DNH"], hr - 1);
         if (isNaN(ls)) {
             ls = 0;
         }
         ls24Hrs_DNH[hr - 1] = ls;
+        dem24Hrs_DNH[hr - 1] = getByAddressFromArray(dnhDataArray, dnhCsvAddresses["demand_MW_col_DNH"], hr - 1) - ls;
     }
 
     maxDemTime_DNH = indexOfMax(dem24Hrs_DNH) + 1;
@@ -52,8 +55,8 @@ function handleDNH() {
     ls20hrs_DNH = ls24Hrs_DNH[19];
     WriteLineConsole("*********** DNH DATA ***********");
     WriteLineConsole("");
-    WriteLineConsole(dem19hrs_DNH);
-    WriteLineConsole(ls19hrs_DNH);
+    WriteLineConsole(dem24Hrs_DNH[peakHrIndex]);
+    WriteLineConsole(ls24Hrs_DNH[peakHrIndex]);
     WriteLineConsole("");
     WriteLineConsole(drawal_DNH);
     WriteLineConsole(drawal_DNH);
